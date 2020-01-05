@@ -1,0 +1,44 @@
+<fieldset>
+    <legend>{{npcData.name}}</legend>
+
+    <div>
+        <fieldset style="background-color:#ffddb0; width:20%; float:left">
+            <legend>General</legend>
+            ID: <input type="text" name="id" readonly value="{{$ctrl.npcData.id}}"><br />
+            Name: <input ng-model='$ctrl.npcData.name'><br />
+            Behavior Id: <input type="number" name="behaviorId" value="{{$ctrl.npcData.behaviorId}}"><br />
+            Is Facing Right: <input type="checkbox" name="isFacingRight" {{$ctrl.npcData.isFacingRight}}>
+        </fieldset>
+        <fieldset style="background-color:lightyellow; width:30%; float:left">
+            <legend>Sprite</legend>
+            Enabled: <input type="checkbox" name="spriteData_enabled" {{$ctrl.npcSpriteData.enabledAsText}>
+            <br />
+            Order: <input type="number" id="numberInput" name="spriteData_order" value="{{$ctrl.npcData.spriteData.order}}">
+            <br />
+            <span>
+            Offset
+            X: <input type="number" id="numberInput" name="spriteData_offset_x" value="{{$ctrl.npcData.spriteData.offset.x}}">
+            Y: <input type="number" id="numberInput" name="spriteData_offset_y" value="{{$ctrl.npcData.spriteData.offset.y}}">
+            </span>
+            <span>
+            Scale:
+            W: <input type="number" id="numberInput" step="0.001" name="spriteData_scale_width" value="{{$ctrl.npcData.spriteData.scale.width}}">
+            H: <input type="number" id="numberInput" step="0.001" name="spriteData_scale_height" value="{{$ctrl.npcData.spriteData.scale.height}}">
+            </span><br />
+            Image File: <input type="text" name="spriteData_imageFile" value="{{$ctrl.npcData.spriteData.imageFile}}">
+        </fieldset>
+        <fieldset style="background-color:lightblue; width:50%">
+            <legend>Status</legend>
+            <div style="width:32%;">
+                <div  align="right">Strength: <input type="number" id="numberInput" name="status_strength" value="{{$ctrl.npcData.statusData.strength}}"></div>
+                <div  align="right">Intelligence: <input type="number" id="numberInput" name="status_intelligence" value="{{$ctrl.npcData.statusData.intelligence}}"></div>
+                <div  align="right">Dexterity: <input type="number" id="numberInput" name="status_dexterity" value="{{$ctrl.npcData.statusData.dexterity}}"></div>
+                <div  align="right">Accuracy: <input type="number" id="numberInput" name="status_accuracy" value="{{$ctrl.npcData.statusData.accuracy}}"></div>
+                <div  align="right">Life: <input type="number" id="numberInput" name="status_life" value="{{$ctrl.npcData.statusData.life}}"></div>
+                <div  align="right">Mana: <input type="number" id="numberInput" name="status_mana" value="{{$ctrl.npcData.statusData.mana}}"></div>
+            </div>
+        </fieldset>
+    </div>
+</fieldset>
+
+<button  ng-click='$ctrl.save()'>Save</button>

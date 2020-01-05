@@ -1,0 +1,11 @@
+body {
+    padding-top: 5rem;
+}
+
+#numberInput {
+    width:60px;
+}
+
+legend {
+    font-size: 20px;
+}
