@@ -1,44 +1,199 @@
-<fieldset>
-    <legend>{{npcData.name}}</legend>
-
-    <div>
-        <fieldset style="background-color:#ffddb0; width:20%; float:left">
-            <legend>General</legend>
-            ID: <input type="text" name="id" readonly value="{{$ctrl.npcData.id}}"><br />
-            Name: <input ng-model='$ctrl.npcData.name'><br />
-            Behavior Id: <input type="number" name="behaviorId" value="{{$ctrl.npcData.behaviorId}}"><br />
-            Is Facing Right: <input type="checkbox" name="isFacingRight" {{$ctrl.npcData.isFacingRight}}>
-        </fieldset>
-        <fieldset style="background-color:lightyellow; width:30%; float:left">
-            <legend>Sprite</legend>
-            Enabled: <input type="checkbox" name="spriteData_enabled" {{$ctrl.npcSpriteData.enabledAsText}>
-            <br />
-            Order: <input type="number" id="numberInput" name="spriteData_order" value="{{$ctrl.npcData.spriteData.order}}">
-            <br />
-            <span>
-            Offset
-            X: <input type="number" id="numberInput" name="spriteData_offset_x" value="{{$ctrl.npcData.spriteData.offset.x}}">
-            Y: <input type="number" id="numberInput" name="spriteData_offset_y" value="{{$ctrl.npcData.spriteData.offset.y}}">
-            </span>
-            <span>
-            Scale:
-            W: <input type="number" id="numberInput" step="0.001" name="spriteData_scale_width" value="{{$ctrl.npcData.spriteData.scale.width}}">
-            H: <input type="number" id="numberInput" step="0.001" name="spriteData_scale_height" value="{{$ctrl.npcData.spriteData.scale.height}}">
-            </span><br />
-            Image File: <input type="text" name="spriteData_imageFile" value="{{$ctrl.npcData.spriteData.imageFile}}">
-        </fieldset>
-        <fieldset style="background-color:lightblue; width:50%">
-            <legend>Status</legend>
-            <div style="width:32%;">
-                <div  align="right">Strength: <input type="number" id="numberInput" name="status_strength" value="{{$ctrl.npcData.statusData.strength}}"></div>
-                <div  align="right">Intelligence: <input type="number" id="numberInput" name="status_intelligence" value="{{$ctrl.npcData.statusData.intelligence}}"></div>
-                <div  align="right">Dexterity: <input type="number" id="numberInput" name="status_dexterity" value="{{$ctrl.npcData.statusData.dexterity}}"></div>
-                <div  align="right">Accuracy: <input type="number" id="numberInput" name="status_accuracy" value="{{$ctrl.npcData.statusData.accuracy}}"></div>
-                <div  align="right">Life: <input type="number" id="numberInput" name="status_life" value="{{$ctrl.npcData.statusData.life}}"></div>
-                <div  align="right">Mana: <input type="number" id="numberInput" name="status_mana" value="{{$ctrl.npcData.statusData.mana}}"></div>
-            </div>
-        </fieldset>
-    </div>
-</fieldset>
-
+<div>
 <button  ng-click='$ctrl.save()'>Save</button>
+    <fieldset>
+        <legend>{{$ctrl.npcData.name}}</legend>
+
+        <div>
+            <fieldset style="background-color:#ffddb0; width:20%; float:left">
+                <legend>General</legend>
+                ID: <input type="text" name="id" readonly value="{{$ctrl.npcData.idAsText}}"><br />
+                Name: <input ng-model='$ctrl.npcData.name'><br />
+                Behavior Id: <input type="number" ng-model='$ctrl.npcData.behaviorId'><br />
+                Is Facing Right: <input type="checkbox" ng-model='$ctrl.npcData.facingRight'>
+            </fieldset>
+            <fieldset style="background-color:lightyellow; width:30%; float:left">
+                <legend>Sprite</legend>
+                Enabled: <input type="checkbox" ng-model='$ctrl.npcData.spriteData.enabled'>
+                <br />
+                Order: <input type="number" id="numberInput" ng-model='$ctrl.npcData.spriteData.order'>
+                <br />
+                <span>
+                Offset
+                X: <input type="number" id="numberInput" ng-model='$ctrl.npcData.spriteData.offset.x'>
+                Y: <input type="number" id="numberInput" ng-model='$ctrl.npcData.spriteData.offset.y'>
+                </span>
+                <span>
+                Scale:
+                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.npcData.spriteData.scale.width'>
+                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.npcData.spriteData.scale.height'>
+                </span><br />
+                Image File: <input type="text" name="spriteData_imageFile" ng-model='$ctrl.npcData.spriteData.imageFile'>
+            </fieldset>
+            <fieldset style="background-color:lightblue">
+                <legend>Status</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <div  align="right">Strength: <input type="number" id="numberInput" ng-model='$ctrl.npcData.status.strength'></div>
+                            <div  align="right">Intelligence: <input type="number" id="numberInput" ng-model='$ctrl.npcData.status.intelligence'></div>
+                            <div  align="right">Dexterity: <input type="number" id="numberInput" ng-model='$ctrl.npcData.status.dexterity'></div>
+                        </td>
+                        <td>
+                            <div  align="right">Accuracy: <input type="number" id="numberInput" ng-model='$ctrl.npcData.status.accuracy'></div>
+                            <div  align="right">Life: <input type="number" id="numberInput" ng-model='$ctrl.npcData.status.life'></div>
+                            <div  align="right">Mana: <input type="number" id="numberInput" ng-model='$ctrl.npcData.status.mana'></div>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+    </fieldset>
+
+    <fieldset style="background-color:lightgreen">
+        <legend>Interactions</legend>
+        Interaction Order:<input type="text" ng-model='$ctrl.npcData.interactionOrder'><br />
+        <ul>
+        <li ng-repeat="inter in $ctrl.npcData.interactionData">
+            <fieldset style="background-color:#bde7a5">
+                <legend>{{inter.type}}</legend>
+                <input type="submit" name="removeNpcInteractionButton${inter.getId()}" value="Remove Interaction" style="height:30px; margin-bottom:10px; background-color:coral;"><br/>
+                Id: <input type="number" readonly ng-model="inter.id">
+                <br />
+                Type: <select ng-model='inter.type'>
+                    <option value="DIALOG">Dialog</option>
+                    <option value="MERCHANT">Merchant</option>
+                    <option value="GIVE_ITEM">Give Item</option>
+                    <option value="PLAY_SOUND">Play Sound</option>
+                    <option value="TELEPORT">Teleport</option>
+                    <option value="REMOVE_QUEST_ITEM">Remove Quest Item</option>
+                </select>
+                <br />
+
+                <span style="float:left">Required Events State:</span>
+                <br />
+                <ul style="background:#b8daff;">
+                    <li ng-repeat="reqState in inter.requireEventsState" style="padding-top:10px; padding-bottom: 10px">
+                        <select name="Type: " ng-model='reqState.type'>
+                            <option value="SWITCH">Switch</option>
+                            <option value="QUEST_ITEM">Quest Item</option>
+                            <option value="NO_ENEMIES_IN_AREA">No Enemies in Area</option>
+                        </select>
+                        <span ng-hide='reqState.type !== "SWITCH"'>
+                            Key:<input type="text" ng-model='reqState.key' style="width: 350px">
+                            State: <input type="checkbox" ng-model='reqState.value'>
+                        </span>
+                        <span ng-hide='reqState.type !== "NO_ENEMIES_IN_AREA"'>
+                            TargetX: <input type="number" ng-model='reqState.targetX' style="width: 60px">
+                            TargetY: <input type="number" ng-model='reqState.targetY' style="width: 60px">
+                        </span>
+                        <span ng-hide='reqState.type !== "QUEST_ITEM"'>
+                            TargetEntity:<input type="text" ng-model='reqState.targetEntity' style="width: 350px">
+                        </span>
+                        <button  ng-click='$ctrl.removeElementFromArray(inter.requireEventsState, reqState)' style="margin-left: 100px">Remove</button>
+                    </li>
+                    <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addEventState(inter.requireEventsState)'>Add Event</button></div>
+                </ul>
+
+                <!-- TODO: find a way to reuse the code for events. -->
+                <span style="float:left">Update Events State:</span>
+                <br />
+                <ul style="background:#66b0ff;">
+                    <li ng-repeat="updState in inter.updateEventsState" style="padding-top:10px; padding-bottom: 10px">
+                        <select name="Type: " ng-model='updState.type'>
+                            <option value="SWITCH">Switch</option>
+                            <option value="QUEST_ITEM">Quest Item</option>
+                            <option value="NO_ENEMIES_IN_AREA">No Enemies in Area</option>
+                        </select>
+                        <span ng-hide='updState.type !== "SWITCH"'>
+                            Key:<input type="text" ng-model='updState.key' style="width: 350px">
+                            State: <input type="checkbox" ng-model='updState.value'>
+                        </span>
+                        <span ng-hide='updState.type !== "NO_ENEMIES_IN_AREA"'>
+                            TargetX: <input type="number" ng-model='updState.targetX' style="width: 60px">
+                            TargetY: <input type="number" ng-model='updState.targetY' style="width: 60px">
+                        </span>
+                        <span ng-hide='updState.type !== "QUEST_ITEM"'>
+                            TargetEntity:<input type="text" ng-model='updState.targetEntity' style="width: 350px">
+                        </span>
+                        <button  ng-click='$ctrl.removeElementFromArray(inter.updateEventsState, updState)' style="margin-left: 100px">Remove</button>
+                    </li>
+                    <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addEventState(inter.updateEventsState)'>Add Event</button></div>
+                </ul>
+
+                <span ng-hide='inter.type !== "MERCHANT"'>
+                    Price Multiplier: <input type="number" step="0.01" id="numberInput" ng-model='inter.priceMultiplier'><br />
+                    <ul style="background:#b8daff;">
+                        Items:
+                        <br />
+                        <li ng-repeat="itemName in inter.items track by $index" style="padding-top:5px; padding-bottom: 5px">
+                            <input type="text" ng-model='inter.items[$index]'>
+                            <button  ng-click='$ctrl.removeElementFromArray(inter.items, inter.items[$index])' style="margin-left: 100px">Remove</button>
+                        </li>
+                        <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addElementToArray(inter.items, "FIX ME")'>Add Item</button></div>
+                    </ul>
+                </span>
+
+
+                Teleport Target Id: <input type="number" step="1" id="numberInput" ng-model='inter.targetId'>
+                Pos - X: <input type="number" step="1" id="numberInput" ng-model='inter.toPos.x'>
+                Y: <input type="number" step="1" id="numberInput" ng-model='inter.toPos.y'><br />
+                Target Data: <input type="text" ng-model='inter.targetData' style="width: 350px">
+                <br />
+
+                <c:forEach var="msg" items="${inter.getMessages()}">
+                    <fieldset style="background-color:#afbf7f">
+                        <legend>Message (${msg.getId()})</legend>
+                        <div style="float:left; width:73%">
+                            <legend>Title</legend>
+                            <div style="background-color:#5cb1af">
+                                <div style="float:left;"><textarea name="interactions_messages_title${msg.getId()}_text" rows="4" cols="100">${msg.getTitle().getText()}</textarea></div>
+                                <div>
+                                    Font: <input type="text" name="interactions_messages_title${msg.getId()}_fonttype" value="${msg.getTitle().getFont()}">
+                                    Style: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_fontstyle" value="${msg.getTitle().getStyle()}">
+                                    Size: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_size" value="${msg.getTitle().getSize()}">
+                                    Color: Text: <input type="color" name="interactions_messages_title${msg.getId()}_color" value="${msg.getTitle().getColorAsHex()}"><br />
+                                    Horizontal Align: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_horizontalAlignment" value="${msg.getTitle().getHorizontalAlignment()}">
+                                    Vertical Align: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_verticalAlignment" value="${msg.getTitle().getVerticalAlignment()}">
+                                    <br />
+                                    <span>
+                                    Rect
+                                    X: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_rect_X" value="${msg.getTitle().getRect().getX()}">
+                                    Y: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_rect_Y" value="${msg.getTitle().getRect().getY()}">
+                                    W: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_rect_W" value="${msg.getTitle().getRect().getWidth()}">
+                                    H: <input type="number" id="numberInput" name="interactions_messages_title${msg.getId()}_rect_H" value="${msg.getTitle().getRect().getHeight()}">
+                                </span>
+                                </div>
+                            </div>
+                            <legend>Text</legend>
+                            <div style="background-color:#afbf7f">
+                                <div style="float:left;"><textarea name="interactions_messages_text${msg.getId()}_text" rows="4" cols="100">${msg.getText().getText()}</textarea> <br /></div>
+                                <div>
+                                    Font: <input type="text" name="interactions_messages_text${msg.getId()}_fonttype" value="${msg.getText().getFont()}">
+                                    Style: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_fontstyle" value="${msg.getText().getStyle()}">
+                                    Size: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_size" value="${msg.getText().getSize()}">
+                                    Color: Text: <input type="color" name="interactions_messages_text${msg.getId()}_color" value="${msg.getText().getColorAsHex()}"><br />
+                                    Horizontal Align: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_horizontalAlignment" value="${msg.getText().getHorizontalAlignment()}">
+                                    Vertical Align: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_verticalAlignment" value="${msg.getText().getVerticalAlignment()}">
+                                    <br />
+                                    <span>
+                                Rect
+                                X: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_rect_X" value="${msg.getText().getRect().getX()}">
+                                Y: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_rect_Y" value="${msg.getText().getRect().getY()}">
+                                W: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_rect_W" value="${msg.getText().getRect().getWidth()}">
+                                H: <input type="number" id="numberInput" name="interactions_messages_text${msg.getId()}_rect_H" value="${msg.getText().getRect().getHeight()}">
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="submit" name="removeMessageButton${msg.getId()}" value="Remove Message" style="height:30px; margin-bottom:10px; background-color:lightcoral; float:right"><br/>
+                    </fieldset>
+                </c:forEach>
+                <input type="submit" name="addMessageButton${inter.getId()}" value="Add Message" style="height:40px; margin-bottom:5px"><br/>
+            </fieldset>
+        </li>
+        </ul>
+        <input type="submit" name="addInteractionButton" value="Add Interaction" style="width:150px;height:50px; margin-right:10px; margin-top:10px">
+    </fieldset>
+
+</div>

@@ -9,3 +9,8 @@ body {
 legend {
     font-size: 20px;
 }
+
+div {
+    padding-left: 20px;
+    padding-right: 20px;
+}
