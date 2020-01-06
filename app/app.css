@@ -6,6 +6,10 @@ body {
     width:60px;
 }
 
+#tinynumberInput {
+    width:30px;
+}
+
 legend {
     font-size: 20px;
 }
@@ -13,4 +17,17 @@ legend {
 div {
     padding-left: 20px;
     padding-right: 20px;
+}
+
+
+/* Remove input arrows Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove input arrows Firefox */
+input[type=number] {
+    -moz-appearance:textfield;
 }
