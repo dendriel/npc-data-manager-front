@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ee91177b-1a8d-45e3-89f7-1f18882a28fb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/core/core.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/core.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/list/npchandler-list.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/list/npchandler-list.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/list/npchandler-list.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/list/npchandler-list.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/npchandler.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/npchandler.service.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +101,8 @@
       <workItem from="1577957436697" duration="601000" />
       <workItem from="1578139679672" duration="347000" />
       <workItem from="1578220490747" duration="19266000" />
-      <workItem from="1578300415287" duration="5926000" />
+      <workItem from="1578300415287" duration="6000000" />
+      <workItem from="1578387372275" duration="4422000" />
     </task>
     <servers />
   </component>

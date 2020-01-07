@@ -8,6 +8,12 @@ function NpcHandlerService($http) {
         return $http.get(url);
     };
 
+    self.delete = function(id) {
+        let url = "http://localhost:8080/npc/delete?id="+id;
+        console.log(url);
+        return $http.get(url);
+    };
+
     self.getAll = function() {
         let url = "http://localhost:8080/npc/getAll";
         console.log(url);

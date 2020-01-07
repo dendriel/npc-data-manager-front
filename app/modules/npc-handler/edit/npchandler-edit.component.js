@@ -6,6 +6,19 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
 
     console.log("Edit npc: " + sharedData.getParam("npc"));
     self.npcData = sharedData.getParam("npc");
+    if (self.npcData === null) {
+        console.log("Create NPC");
+        self.npcData = {
+            name: "FIX ME",
+            behaviorId: 2,
+            status: { strength: 0, intelligence: 0, dexterity: 0, accuracy: 0, life: 0, mana: 0 },
+            spriteData: { imageFile: "FIX ME", order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
+            interactionOrder: [],
+            interactionData: [],
+            facingRight: false,
+            idAsText: null
+        }
+    }
 
     self.addEventState = (eventsState) => {
         eventsState.push({
@@ -95,6 +108,7 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
             .then((res) => {
                 if (res.status === 200) {
                     FeedbackBarService.info("NPC saved successfully!");
+                    self.npcData = res.data;
                 } else {
                     FeedbackBarService.error("Failed to save NPC! Status: " + res.status);
                 }
