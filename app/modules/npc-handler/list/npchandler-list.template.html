@@ -2,9 +2,10 @@
 <ul style="width:50%; padding-bottom: 50px;">
     <li ng-repeat="npc in $ctrl.npcs" style="padding-bottom: 10px; padding-top: 10px">
         <fieldset style="background-color: #e0e0eb">
-            <legend style="font-size: 24px;">{{npc.name}}</legend>
+            <legend style="font-size: 24px;">{{npc.name}} ({{npc.uid}})</legend>
             <div style="float:left; width:300px">
                 <button type="input" ng-click="$ctrl.editNpc(npc)" style="float:left;width:50px;height:70px; margin-right:10px; margin-bottom: 5px">Edit</button>
+                UID: {{npc.uid}} <br />
                 Image: {{npc.spriteData.imageFile}}<br />
                 Behavior ID: {{npc.behaviorId}}
             </div>

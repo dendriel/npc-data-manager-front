@@ -34,6 +34,21 @@ function NpcHandlerService($http) {
         });
     };
 
+    self.import = function(filePath) {
+        let url = "http://localhost:8080/npc/import";
+        let data = filePath;
+        console.log(url + " - " + data);
+        return $http({
+            method: 'POST',
+            dataType: 'json',
+            url: url,
+            headers: {
+                'Content-Type': "application/json;charset=utf-8"
+            },
+            data: data
+        });
+    };
+
     self.export = function(filePath) {
         let url = "http://localhost:8080/npc/export";
         let data = filePath;

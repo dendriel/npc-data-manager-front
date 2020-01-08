@@ -10,6 +10,11 @@ function NpcHandlerListController($location, NpcHandlerService, sharedData, Feed
     };
 
     self.removeNpc = (npc) => {
+        let remove = confirm("Do you really want to remove " + npc.name + "?");
+        if (remove === false) {
+            return;
+        }
+
         const index = self.npcs.indexOf(npc);
         if (index > -1) {
             NpcHandlerService
@@ -35,6 +40,7 @@ function NpcHandlerListController($location, NpcHandlerService, sharedData, Feed
         .getAll()
         .then((res) => {
             self.npcs = res.data;
+            sharedData.setParam("npcs", res.data);
         });
 
     FeedbackBarService.hide();

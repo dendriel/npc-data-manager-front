@@ -6,7 +6,7 @@
         <div>
             <fieldset style="background-color:#ffddb0; width:20%; float:left">
                 <legend>General</legend>
-                ID: <input type="text" name="id" readonly value="{{$ctrl.npcData.idAsText}}"><br />
+                UID: <input type="text" name="id" readonly ng-model="$ctrl.npcData.uid"><br />
                 Name: <input ng-model='$ctrl.npcData.name'><br />
                 Behavior Id: <input type="number" ng-model='$ctrl.npcData.behaviorId'><br />
                 Is Facing Right: <input type="checkbox" ng-model='$ctrl.npcData.facingRight'>

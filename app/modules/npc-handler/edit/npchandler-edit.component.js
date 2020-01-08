@@ -4,12 +4,25 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
     let self = this;
     self.npcData = {};
 
+
+    self.findNextNpcUid = () => {
+        let npcs = sharedData.getParam("npcs");
+        let lastUid = 0;
+        npcs.map(function(obj){
+            if (obj.uid > lastUid){
+                lastUid = obj.uid;
+            }
+        });
+        return lastUid+1;
+    }
+
     console.log("Edit npc: " + sharedData.getParam("npc"));
     self.npcData = sharedData.getParam("npc");
     if (self.npcData === null) {
         console.log("Create NPC");
         self.npcData = {
             name: "FIX ME",
+            uid: self.findNextNpcUid(),
             behaviorId: 2,
             status: { strength: 0, intelligence: 0, dexterity: 0, accuracy: 0, life: 0, mana: 0 },
             spriteData: { imageFile: "FIX ME", order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
@@ -98,8 +111,7 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
                 lastId = obj.id;
             }
         });
-        let nextId = lastId+1;
-        return nextId;
+        return lastId+1;
     };
 
     self.save = () => {
@@ -129,21 +141,7 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
         }
 
         return sortedInteractionData;
-    }
-
-    // $scope.$watchCollection('$ctrl.npcData.interactionOrder', function (newOrder, oldValue) {
-    //     let sortedInteractionData = [];
-    //
-    //     let i = 0;
-    //     for (; i < newOrder.length; i++) {
-    //         let targetId = newOrder[i];
-    //         let currInter = self.npcData.interactionData.find(elem => elem.id === targetId);
-    //         sortedInteractionData.push(currInter);
-    //     }
-    //
-    //     self.npcData.interactionData = sortedInteractionData;
-    //     console.log("Scope changed! " + newOrder + " - " + oldValue);
-    // });
+    };
 }
 
 angular
