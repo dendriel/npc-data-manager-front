@@ -5,6 +5,9 @@ angular
             $locationProvider.hashPrefix('!');
 
             $routeProvider
+                .when('/dashboard', {
+                    template: '<dashboard></dashboard>'
+                })
                 .when('/npc/list', {
                     template: '<npc-list></npc-list>'
                 })
@@ -14,6 +17,6 @@ angular
                 .when('/npc/importExport/:action', {
                     template: '<npc-export></npc-export>'
                 })
-                .otherwise('/npc/list');
+                .otherwise('/dashboard');
         }
     ]);
