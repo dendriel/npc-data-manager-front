@@ -1,8 +1,7 @@
 <div>
     <button  ng-click='$ctrl.save()'>Save</button>
     <fieldset>
-        <legend>{{$ctrl.itemData.name}}</legend>
-
+        <legend>{{$ctrl.data.name}}</legend>
         <div>
             <fieldset style="background-color:#ffddb0; width:30%; float:left">
                 <legend>General</legend>
@@ -25,11 +24,11 @@
                     </tr>
                     <tr>
                         <td>Name:</td>
-                        <td><input ng-model='$ctrl.data.name'></td>
+                        <td><input type="text" ng-model='$ctrl.data.name'></td>
                     </tr>
                     <tr>
                         <td>Descritpion:</td>
-                        <td><input ng-model='$ctrl.data.description'></td>
+                        <td><input type="text" ng-model='$ctrl.data.description'></td>
                     </tr>
                     <tr>
                         <td>Level:</td>
@@ -62,7 +61,6 @@
                 </span><br />
                 Image File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data.iconData.imageFile'>
             </fieldset>
-
             <fieldset style="background-color:lightyellow; width:30%; float:left">
                 <legend>Sprite</legend>
                 Enabled: <input type="checkbox" ng-model='$ctrl.data.spriteData.enabled'>
@@ -81,6 +79,63 @@
                 H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.spriteData.scale.height'>
                 </span><br />
                 Image File: <input type="text" name="spriteData_imageFile" ng-model='$ctrl.data.spriteData.imageFile'>
+            </fieldset>
+        </div>
+
+        <div ng-hide='$ctrl.data.type !== "wearable"'>
+            <fieldset style="background-color:#E8F8FF; width:30%; float:left">
+                <legend>Status</legend>
+                <table>
+                    <tr>
+                        <td>Attack:</td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.status.minAttack'>-</td>
+                        <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.status.maxAttack'></td>
+                    </tr>
+                    <tr>
+                        <td>Defense:</td>
+                        <td><input type="number" id="numberInput" ng-model='$ctrl.data.status.defense'></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset style="background-color:#E8F8FF; width:30%; float:left">
+                <legend>Slots</legend>
+                <ul>
+                    <li ng-repeat="slot in $ctrl.data.wearableSlots track by $index" style="padding-top:5px; padding-bottom: 5px">
+                        <select ng-model='$ctrl.data.wearableSlots[$index]'>
+                            <option value="NECK">Neck</option>
+                            <option value="HEAD">Head</option>
+                            <option value="TORSO">Torso</option>
+                            <option value="FEET">Feet</option>
+                            <option value="BACK">Back</option>
+                            <option value="LEFT_HAND">Left Hand</option>
+                            <option value="RIGHT_HAND">Right Hand</option>
+                        </select>
+                        <div style="float:right">
+                            <button ng-click='$ctrl.removeElementFromArray($ctrl.data.wearableSlots, $ctrl.data.wearableSlots[$index])'>Remove</button>
+                        </div>
+                    </li>
+                </ul>
+                <div style="padding-top:10px; padding-bottom: 5px">
+                    <button ng-click='$ctrl.addElementToArray($ctrl.data.wearableSlots, "NECK")'>Add Slot</button>
+                </div>
+            </fieldset>
+        </div>
+        <div ng-hide='$ctrl.data.type !== "usable"'>
+            <fieldset style="background-color:#E8F8FF; width:30%; float:left">
+                <legend>Modifiers</legend>
+                Sound EFX: <input type="text" ng-model='$ctrl.data.soundEfx'>
+                <ul>
+                    <li ng-repeat="mod in $ctrl.data.statusModifiersData" style="padding-top:5px; padding-bottom: 5px">
+                        <td>Life Mod: <input type="number" id="numberInput" ng-model='mod.lifeModifier'></td>
+                        <td>Mana Mod: <input type="number" id="numberInput" ng-model='mod.manaModifier'></td>
+                        <div style="float:right">
+                            <button ng-click='$ctrl.removeElementFromArray($ctrl.data.statusModifiersData, mod)'>Remove</button>
+                        </div>
+                    </li>
+                </ul>
+                <div style="padding-bottom: 5px">
+                    <button ng-click='$ctrl.addElementToArray($ctrl.data.statusModifiersData, {lifeModifier: 0, manaModifier: 0})'>Add Modifier</button>
+                </div>
             </fieldset>
         </div>
     </fieldset>

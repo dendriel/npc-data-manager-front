@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee91177b-1a8d-45e3-89f7-1f18882a28fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/core/import-export/core-importexport.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/core/import-export/core-importexport.template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/item-handler/edit/itemhandler-edit.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/item-handler/edit/itemhandler-edit.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/item-handler/edit/itemhandler-edit.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/item-handler/edit/itemhandler-edit.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.component.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +106,7 @@
       <workItem from="1578474701268" duration="3294000" />
       <workItem from="1578563049104" duration="4066000" />
       <workItem from="1578649654855" duration="713000" />
-      <workItem from="1578824020662" duration="12239000" />
+      <workItem from="1578824020662" duration="15732000" />
     </task>
     <servers />
   </component>

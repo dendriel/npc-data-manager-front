@@ -17,7 +17,7 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
 
     console.log("Edit npc: " + sharedData.getParam("npc"));
     self.npcData = sharedData.getParam("npc");
-    if (self.npcData === null) {
+    if (self.npcData === null || self.npcData === undefined) {
         console.log("Create NPC");
         self.npcData = {
             name: "FIX ME",
