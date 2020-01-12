@@ -1,0 +1,87 @@
+<div>
+    <button  ng-click='$ctrl.save()'>Save</button>
+    <fieldset>
+        <legend>{{$ctrl.itemData.name}}</legend>
+
+        <div>
+            <fieldset style="background-color:#ffddb0; width:30%; float:left">
+                <legend>General</legend>
+                <table>
+                    <tr>
+                        <td>Type:</td>
+                        <td style="text-align: left">
+                        <select ng-model='$ctrl.data.type'>
+                            <option value="gold">Gold</option>
+                            <option value="quest">Quest</option>
+                            <option value="wearable">Wearable</option>
+                            <option value="usable">Usable</option>
+                            <option value="valuable">Valuable</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>UID:</td>
+                        <td><input type="text" name="id" readonly ng-model="$ctrl.data.uid"></td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input ng-model='$ctrl.data.name'></td>
+                    </tr>
+                    <tr>
+                        <td>Descritpion:</td>
+                        <td><input ng-model='$ctrl.data.description'></td>
+                    </tr>
+                    <tr>
+                        <td>Level:</td>
+                        <td><input type="number" ng-model='$ctrl.data.level'></td>
+                    </tr>
+                    <tr>
+                        <td>Count:</td>
+                        <td><input type="number" ng-model='$ctrl.data.count'></td>
+                    </tr>
+                    <tr>
+                        <td>Max Stack:</td>
+                        <td><input type="number" ng-model='$ctrl.data.maximumStack'></td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td><input type="number" ng-model='$ctrl.data.price'></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset style="background-color:lightcyan; width:30%; float:left">
+                <legend>Icon</legend>
+                Rect<br />
+                X: <input type="number" id="numberInput" ng-model='$ctrl.data.iconData.rect.x'>
+                Y: <input type="number" id="numberInput" ng-model='$ctrl.data.iconData.rect.y'>
+                </span>
+                <br />
+                <span>
+                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.iconData.rect.width'>
+                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.iconData.rect.height'>
+                </span><br />
+                Image File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data.iconData.imageFile'>
+            </fieldset>
+
+            <fieldset style="background-color:lightyellow; width:30%; float:left">
+                <legend>Sprite</legend>
+                Enabled: <input type="checkbox" ng-model='$ctrl.data.spriteData.enabled'>
+                <br />
+                Order: <input type="number" id="numberInput" ng-model='$ctrl.data.spriteData.order'>
+                <br />
+                <span>
+                Offset
+                X: <input type="number" id="numberInput" ng-model='$ctrl.data.spriteData.offset.x'>
+                Y: <input type="number" id="numberInput" ng-model='$ctrl.data.spriteData.offset.y'>
+                </span>
+                <br />
+                <span>
+                Scale
+                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.spriteData.scale.width'>
+                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.spriteData.scale.height'>
+                </span><br />
+                Image File: <input type="text" name="spriteData_imageFile" ng-model='$ctrl.data.spriteData.imageFile'>
+            </fieldset>
+        </div>
+    </fieldset>
+</div>

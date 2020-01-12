@@ -50,5 +50,5 @@ angular
     .module('npchandler')
     .component('npcList', {
        templateUrl: 'modules/npc-handler/list/npchandler-list.template.html',
-        controller: ['$location', 'NpcHandlerService', 'NpcHandlerSharedDataService', "FeedbackBarService", NpcHandlerListController]
+        controller: ['$location', 'NpcHandlerService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerListController]
     });

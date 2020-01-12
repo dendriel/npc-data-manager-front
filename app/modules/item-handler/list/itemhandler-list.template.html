@@ -2,11 +2,21 @@
     <li ng-repeat="elem in $ctrl.items" style="padding-bottom: 10px; padding-top: 10px">
         <fieldset style="background-color: #e0e0eb">
             <legend style="font-size: 24px;">{{elem.name}} ({{elem.uid}})</legend>
-            <div style="float:left; width:350px">
+            <div style="float:left; width:600px">
                 <button type="input" ng-click="$ctrl.edit(elem)" style="float:left;width:50px;height:70px; margin-right:10px; margin-bottom: 5px">Edit</button>
-                <img ng-src="images\{{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left" height="80" width="80">
-                UID: {{elem.uid}} <br />
-                Image: {{elem.spriteData.imageFile}}
+                <img ng-src="images\{{elem.iconData.imageFile}}" alt="elem_icon" class="image" height="64" width="64">
+                <img ng-src="images\{{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_sprite" class="image" height="64" width="64">
+                <span style="margin-left:10px">
+                    Name: {{elem.name}}
+                </span>
+                <br />
+                <span style="margin-left:10px">
+                    Max Stack: {{elem.maximumStack}}
+                </span>
+                <br />
+                <span style="margin-left:10px">
+                    Price: {{elem.price}}
+                </span>
             </div>
             <div style="float:right">
                 <button type="input" ng-click="$ctrl.remove(elem)" style="float:left;height:70px; margin-right:10px; margin-bottom: 5px">Remove</button>

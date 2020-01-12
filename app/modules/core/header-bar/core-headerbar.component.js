@@ -1,12 +1,12 @@
 'use strict';
 
-function HeaderBarController($location, $route, NpcHandlerSharedDataService) {
+function HeaderBarController($location, $route, sharedData) {
     let self = this;
 
     self.changeRoute = function(newRoute) {
         $location.path(newRoute);
         if (window.location.href.indexOf(newRoute) !== -1) {
-            NpcHandlerSharedDataService.setParam("npc", null);
+            sharedData.clear();
             $route.reload();
         } else {
             $location.path(newRoute);
@@ -19,5 +19,5 @@ angular
     .module('core')
     .component('headerBar', {
         templateUrl: 'modules/core/header-bar/core-headerbar.template.html',
-        controller: ['$location', '$route', 'NpcHandlerSharedDataService', HeaderBarController]
+        controller: ['$location', '$route', 'CoreSharedDataService', HeaderBarController]
     });

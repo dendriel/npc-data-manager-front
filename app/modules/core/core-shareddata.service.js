@@ -1,6 +1,6 @@
 'use strict';
 
-function ItemHandlerSharedDataService() {
+function CoreSharedDataService() {
     let self = this;
     self.data = [];
 
@@ -11,8 +11,12 @@ function ItemHandlerSharedDataService() {
     self.getParam = (key) => {
         return self.data[key];
     };
+
+    self.clear = () => {
+        self.data = [];
+    }
 }
 
 angular
-    .module('itemhandler')
-    .service('ItemHandlerSharedDataService', [ItemHandlerSharedDataService]);
+    .module('core')
+    .service('CoreSharedDataService', [CoreSharedDataService]);

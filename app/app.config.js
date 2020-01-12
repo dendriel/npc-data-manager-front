@@ -22,6 +22,9 @@ angular
                 .when('/item/list', {
                     template: '<item-list></item-list>'
                 })
+                .when('/item/edit', {
+                    template: '<item-edit></item-edit>'
+                })
                 .otherwise('/dashboard');
         }
     ]);

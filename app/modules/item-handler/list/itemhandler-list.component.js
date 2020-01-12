@@ -51,5 +51,5 @@ angular
     .module('itemhandler')
     .component('itemList', {
         templateUrl: 'modules/item-handler/list/itemhandler-list.template.html',
-        controller: ['$location', 'CoreGenericService', 'ItemHandlerSharedDataService', "FeedbackBarService", ItemHandlerListController]
+        controller: ['$location', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", ItemHandlerListController]
     });

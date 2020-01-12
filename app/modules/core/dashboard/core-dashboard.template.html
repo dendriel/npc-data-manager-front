@@ -8,5 +8,13 @@
         </div>
     </fieldset>
 
+    <fieldset style="background-color: #E8F8FF">
+        <legend style="font-size: 24px;">Items</legend>
+        <div style="float:left; width:350px">
+            <button type="input" ng-click="$ctrl.item.list()" style="float:left;width:70px;height:70px; margin-right:10px; margin-bottom: 5px">List</button>
+            <img ng-src="images\icon_iron_dagger.png" alt="item_icon" style="float:left" height="64" width="64">
+            Count: {{$ctrl.item.count}} <br />
+        </div>
+    </fieldset>
 
 </div>

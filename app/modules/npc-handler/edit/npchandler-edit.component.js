@@ -4,7 +4,6 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
     let self = this;
     self.npcData = {};
 
-
     self.findNextNpcUid = () => {
         let npcs = sharedData.getParam("npcs");
         let lastUid = 0;
@@ -148,5 +147,5 @@ angular
     .module('npchandler')
     .component('npcEdit', {
         templateUrl: 'modules/npc-handler/edit/npchandler-edit.template.html',
-        controller: ['$scope', '$routeParams', 'NpcHandlerService', 'NpcHandlerSharedDataService', "FeedbackBarService", NpcHandlerEditController]
+        controller: ['$scope', '$routeParams', 'NpcHandlerService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerEditController]
     });
