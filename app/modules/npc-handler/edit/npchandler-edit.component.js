@@ -14,7 +14,7 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
             }
         });
         return lastUid+1;
-    }
+    };
 
     console.log("Edit npc: " + sharedData.getParam("npc"));
     self.npcData = sharedData.getParam("npc");

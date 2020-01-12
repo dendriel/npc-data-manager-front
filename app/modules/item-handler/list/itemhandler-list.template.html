@@ -1,0 +1,16 @@
+<ul style="width:60%; padding-bottom: 50px;">
+    <li ng-repeat="elem in $ctrl.items" style="padding-bottom: 10px; padding-top: 10px">
+        <fieldset style="background-color: #e0e0eb">
+            <legend style="font-size: 24px;">{{elem.name}} ({{elem.uid}})</legend>
+            <div style="float:left; width:350px">
+                <button type="input" ng-click="$ctrl.edit(elem)" style="float:left;width:50px;height:70px; margin-right:10px; margin-bottom: 5px">Edit</button>
+                <img ng-src="images\{{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left" height="80" width="80">
+                UID: {{elem.uid}} <br />
+                Image: {{elem.spriteData.imageFile}}
+            </div>
+            <div style="float:right">
+                <button type="input" ng-click="$ctrl.remove(elem)" style="float:left;height:70px; margin-right:10px; margin-bottom: 5px">Remove</button>
+            </div>
+        </fieldset>
+    </li>
+</ul>

@@ -8,6 +8,7 @@ angular
                 .when('/dashboard', {
                     template: '<dashboard></dashboard>'
                 })
+                // NPCS
                 .when('/npc/list', {
                     template: '<npc-list></npc-list>'
                 })
@@ -16,6 +17,10 @@ angular
                 })
                 .when('/npc/importExport/:action', {
                     template: '<npc-export></npc-export>'
+                })
+                // ITEMS
+                .when('/item/list', {
+                    template: '<item-list></item-list>'
                 })
                 .otherwise('/dashboard');
         }
