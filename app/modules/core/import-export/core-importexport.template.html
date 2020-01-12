@@ -1,0 +1,10 @@
+<div>
+    <fieldset style="{{$ctrl.style}}">
+        <legend>{{$ctrl.legend}}</legend>
+        <div>
+            {{$ctrl.actionName}} Destination:<input type="text" style="width:600px; margin-left: 5px;" ng-model="$ctrl.filePath">
+            <br />
+            <button style="float:right;margin-top:10px; margin-bottom: 10px;" ng-click='$ctrl.execute()'>{{$ctrl.actionName}}</button>
+        </div>
+    </fieldset>
+</div>

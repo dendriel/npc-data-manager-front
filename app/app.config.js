@@ -5,8 +5,12 @@ angular
             $locationProvider.hashPrefix('!');
 
             $routeProvider
+                // Core
                 .when('/dashboard', {
                     template: '<dashboard></dashboard>'
+                })
+                .when('/core/importExport/:action/:entity/:file_name', {
+                    template: '<import-export></import-export>'
                 })
                 // NPCS
                 .when('/npc/list', {
@@ -14,9 +18,6 @@ angular
                 })
                 .when('/npc/edit', {
                     template: '<npc-edit></npc-edit>'
-                })
-                .when('/npc/importExport/:action', {
-                    template: '<npc-export></npc-export>'
                 })
                 // ITEMS
                 .when('/item/list', {

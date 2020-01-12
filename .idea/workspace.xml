@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee91177b-1a8d-45e3-89f7-1f18882a28fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/modules/item-handler/edit/itemhandler-edit.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/item-handler/edit/itemhandler-edit.template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/core/import-export/core-importexport.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/core/import-export/core-importexport.template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/core/dashboard/core-dashboard.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/dashboard/core-dashboard.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/core/dashboard/core-dashboard.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/dashboard/core-dashboard.template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/item-handler/itemhandler-shareddata.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/core-shareddata.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/item-handler/list/itemhandler-list.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/item-handler/list/itemhandler-list.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/item-handler/list/itemhandler-list.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/item-handler/list/itemhandler-list.template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/edit/npchandler-edit.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/list/npchandler-list.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/npc-handler/list/npchandler-list.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/npc-handler/npchandler-shareddata.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/modules/core/header-bar/core-headerbar.template.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +37,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/modules/core" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/modules/core/import-export" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\workspace\Java\npc-data-manager-front\app\modules\core\import-export" />
       <recent name="E:\workspace\Java\npc-data-manager-front\app\modules\core" />
       <recent name="E:\workspace\Java\npc-data-manager-front\app\images" />
       <recent name="E:\workspace\Java\npc-data-manager-front\app" />
@@ -115,7 +107,7 @@
       <workItem from="1578474701268" duration="3294000" />
       <workItem from="1578563049104" duration="4066000" />
       <workItem from="1578649654855" duration="713000" />
-      <workItem from="1578824020662" duration="8959000" />
+      <workItem from="1578824020662" duration="12239000" />
     </task>
     <servers />
   </component>
