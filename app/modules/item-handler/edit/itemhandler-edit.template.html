@@ -93,7 +93,21 @@
                     </tr>
                     <tr>
                         <td>Defense:</td>
-                        <td><input type="number" id="numberInput" ng-model='$ctrl.data.status.defense'></td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.status.defense'></td>
+                    </tr>
+                    <tr>
+                        <td>Range:</td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.status.minRange'>-</td>
+                        <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.status.maxRange'></td>
+                    </tr>
+                    <tr>
+                        <td>Ammo Type:</td>
+                        <td>
+                            <select ng-model='$ctrl.data.ammoType'>
+                                <option value="NONE">None</option>
+                                <option value="ARROW">Arrow</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
             </fieldset>
