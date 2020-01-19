@@ -97,6 +97,7 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
                     enabled: true
                 }
             },
+            hit: { vfx: "hit", sfx: "melee_hit" },
             idAsText: null
         }
     };
