@@ -49,8 +49,22 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
         }
     };
 
+    self.fixData = (data) => {
+      if (data.aim === null || data.aim === undefined) {
+          data.aim = { aimSprite: {
+                  imageFile: "FIX ME SPRITE",
+                  order: 0,
+                  offset: {x: 0, y: 0},
+                  scale: {width: 1, height: 1},
+                  enabled: true
+              }
+            }
+      }
+    };
+
     self.initiliaze = () => {
         if (self.data !== null && self.data !== undefined) {
+            self.fixData(self.data);
             return;
         }
         console.log("Create Item");
@@ -71,10 +85,18 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
             count: 1,
             maximumStack: 20,
             price: 100,
-            status: { minAttack:0, maxAttack:0, defense:0 },
+            status: { minAttack:0, maxAttack:0, defense:0, minRange:0, maxRange:0 },
             wearableSlots : [],
             soundEfx: "",
             statusModifiersData: [],
+            aim: { aimSprite: {
+                    imageFile: "FIX ME SPRITE",
+                        order: 0,
+                        offset: {x: 0, y: 0},
+                    scale: {width: 1, height: 1},
+                    enabled: true
+                }
+            },
             idAsText: null
         }
     };
