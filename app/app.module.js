@@ -4,5 +4,6 @@ angular.module('npcDataManager', [
     'ngRoute',
     'npchandler',
     'itemhandler',
-    'core'
+    'core',
+    'sharedcomponents'
 ]);

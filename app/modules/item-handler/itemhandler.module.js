@@ -1,4 +1,7 @@
 'use string';
 
 angular
-    .module('itemhandler', ['core']);
+    .module('itemhandler', [
+        'core',
+        'sharedcomponents'
+    ]);

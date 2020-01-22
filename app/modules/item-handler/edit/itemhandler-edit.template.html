@@ -61,25 +61,8 @@
                 </span><br />
                 Image File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data.iconData.imageFile'>
             </fieldset>
-            <fieldset style="background-color:lightyellow; width:30%; float:left">
-                <legend>Sprite</legend>
-                Enabled: <input type="checkbox" ng-model='$ctrl.data.spriteData.enabled'>
-                <br />
-                Order: <input type="number" id="numberInput" ng-model='$ctrl.data.spriteData.order'>
-                <br />
-                <span>
-                Offset
-                X: <input type="number" id="numberInput" ng-model='$ctrl.data.spriteData.offset.x'>
-                Y: <input type="number" id="numberInput" ng-model='$ctrl.data.spriteData.offset.y'>
-                </span>
-                <br />
-                <span>
-                Scale
-                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.spriteData.scale.width'>
-                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.spriteData.scale.height'>
-                </span><br />
-                Image File: <input type="text" name="spriteData_imageFile" ng-model='$ctrl.data.spriteData.imageFile'>
-            </fieldset>
+
+            <sprite sprite-data='$ctrl.data.spriteData'></sprite>
         </div>
 
         <div ng-hide='$ctrl.data.type !== "wearable"'>
@@ -151,25 +134,7 @@
             <div ng-hide='$ctrl.data.status.minRange <= 0'>
                 <fieldset style="background-color:#E8F8FF; width:30%; float:left">
                     <legend>Aim</legend>
-                    <fieldset style="background-color:lightyellow; float:left">
-                        <legend>Sprite</legend>
-                        Enabled: <input type="checkbox" ng-model='$ctrl.data.aim.aimSprite.enabled'>
-                        <br />
-                        Order: <input type="number" id="numberInput" ng-model='$ctrl.data.aim.aimSprite.order'>
-                        <br />
-                        <span>
-                Offset
-                X: <input type="number" id="numberInput" ng-model='$ctrl.data.aim.aimSprite.offset.x'>
-                Y: <input type="number" id="numberInput" ng-model='$ctrl.data.aim.aimSprite.offset.y'>
-                </span>
-                        <br />
-                        <span>
-                Scale
-                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.aim.aimSprite.scale.width'>
-                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.aim.aimSprite.scale.height'>
-                </span><br />
-                        Image File: <input type="text" name="spriteData_imageFile" ng-model='$ctrl.data.aim.aimSprite.imageFile'>
-                    </fieldset>
+                    <sprite sprite-data='$ctrl.data.aim.aimSprite'></sprite>
                 </fieldset>
             </div>
 

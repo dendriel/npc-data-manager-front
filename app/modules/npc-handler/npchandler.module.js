@@ -1,4 +1,7 @@
 'use strict';
 
 angular
-    .module('npchandler', ['core']);
+    .module('npchandler', [
+        'core',
+        'sharedcomponents',
+    ]);

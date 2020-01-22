@@ -12,27 +12,10 @@
                 Behavior Id: <input type="number" ng-model='$ctrl.npcData.behaviorId'><br />
                 Is Facing Right: <input type="checkbox" ng-model='$ctrl.npcData.facingRight'>
             </fieldset>
-            <fieldset style="background-color:lightyellow; width:30%; float:left">
-                <legend>Sprite</legend>
-                Enabled: <input type="checkbox" ng-model='$ctrl.npcData.spriteData.enabled'>
-                <br />
-                Order: <input type="number" id="numberInput" ng-model='$ctrl.npcData.spriteData.order'>
-                <br />
-                <span>
-                Offset
-                X: <input type="number" id="numberInput" ng-model='$ctrl.npcData.spriteData.offset.x'>
-                Y: <input type="number" id="numberInput" ng-model='$ctrl.npcData.spriteData.offset.y'>
-                </span>
-                <span>
-                Scale:
-                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.npcData.spriteData.scale.width'>
-                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.npcData.spriteData.scale.height'>
-                </span><br />
-                Image File: <input type="text" name="spriteData_imageFile" ng-model='$ctrl.npcData.spriteData.imageFile'>
-            </fieldset>
+            <sprite sprite-data='$ctrl.npcData.spriteData'></sprite>
+
 <!--            <fieldset style="background-color:lightblue">-->
 <!--                <legend>Status</legend>-->
-<!--                <table>-->
 <!--                    <tr>-->
 <!--                        <td>-->
 <!--                            <div  align="right">Strength: <input type="number" id="numberInput" ng-model='$ctrl.npcData.status.strength'></div>-->
