@@ -12,7 +12,7 @@
 <!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
 <!--            </li>-->
 
-            <!-- File -->
+            <!-- NPC -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="https://example.com" id="npc-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NPC</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -22,7 +22,7 @@
                     <a class="dropdown-item" href="#!core/importExport/export/npc/npcs_data">Export</a>
                 </div>
             </li>
-            <!-- Npc -->
+            <!-- Item -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="https://example.com" id="item-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Item</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -30,6 +30,16 @@
                     <button type="input" class="dropdown-item" ng-click='$ctrl.changeRoute("/item/edit")'>Create</button>
                     <a class="dropdown-item" href="#!core/importExport/import/item/items_data">Import</a>
                     <a class="dropdown-item" href="#!core/importExport/export/item/items_data">Export</a>
+                </div>
+            </li>
+            <!-- Enemy -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="https://example.com" id="item-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enemy</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#!enemy/list">List</a>
+                    <button type="input" class="dropdown-item" ng-click='$ctrl.changeRoute("/enemy/edit")'>Create</button>
+                    <a class="dropdown-item" href="#!core/importExport/import/enemy/enemy_data">Import</a>
+                    <a class="dropdown-item" href="#!core/importExport/export/enemy/enemy_data">Export</a>
                 </div>
             </li>
             <li class="nav-item">

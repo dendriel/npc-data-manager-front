@@ -14,6 +14,11 @@ function DashboardController($location, CoreGenericService, sharedData) {
         list: () => { self.changeRoute("/item/list") }
     };
 
+    self.enemy = {
+        count: 0,
+        list: () => { self.changeRoute("/enemy/list") }
+    };
+
     CoreGenericService
         .getAll('npc')
         .then(res => {
@@ -26,6 +31,12 @@ function DashboardController($location, CoreGenericService, sharedData) {
             self.item.count = res.data.length;
         });
 
+    CoreGenericService
+        .getAll('enemy')
+        .then(res => {
+            self.enemy.count = res.data.length;
+        });
+
     self.changeRoute = function(newRoute) {
         $location.path(newRoute);
     };
@@ -36,7 +47,7 @@ function DashboardController($location, CoreGenericService, sharedData) {
             legend: "NPCs",
             bgcolor: "#E8F8FF",
             icon: {
-                image: "images\\bandit01.png",
+                image: "images\\merchant01.png",
                 w: 80, h: 80
             },
         },
@@ -47,6 +58,15 @@ function DashboardController($location, CoreGenericService, sharedData) {
             icon: {
                 image: "images\\icon_iron_dagger.png",
                 w: 64, h: 64
+            },
+        },
+        {
+            data: self.enemy,
+            legend: "Enemies",
+            bgcolor: "#f8d7da",
+            icon: {
+                image: "images\\bandit01.png",
+                w: 80, h: 80
             },
         }
     ]
