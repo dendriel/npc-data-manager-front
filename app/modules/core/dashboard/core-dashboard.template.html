@@ -1,20 +1,12 @@
 <div>
-    <fieldset style="background-color: #E8F8FF">
-        <legend style="font-size: 24px;">NPCS</legend>
-        <div style="float:left; width:350px">
-            <button type="input" ng-click="$ctrl.npc.list()" style="float:left;width:70px;height:70px; margin-right:10px; margin-bottom: 5px">List</button>
-            <img ng-src="images\bandit01.png" alt="npc_icon" style="float:left" height="80" width="80">
-            Count: {{$ctrl.npc.count}} <br />
-        </div>
-    </fieldset>
-
-    <fieldset style="background-color: #E8F8FF">
-        <legend style="font-size: 24px;">Items</legend>
-        <div style="float:left; width:350px">
-            <button type="input" ng-click="$ctrl.item.list()" style="float:left;width:70px;height:70px; margin-right:10px; margin-bottom: 5px">List</button>
-            <img ng-src="images\icon_iron_dagger.png" alt="item_icon" style="float:left" height="64" width="64">
-            Count: {{$ctrl.item.count}} <br />
-        </div>
-    </fieldset>
-
+    <span ng-repeat="elem in $ctrl.elements">
+        <fieldset style="background-color: {{elem.bgcolor}}; padding-bottom: 10px">
+            <legend style="font-size: 24px;">{{elem.legend}}</legend>
+            <div style="float:left; width:350px">
+                <button type="input" ng-click="elem.data.list()" style="float:left;width:70px;height:70px; margin-right:10px; margin-bottom: 5px">List</button>
+                <img ng-src="{{elem.icon.image}}" alt="item_icon" style="float:left" height="{{elem.icon.w}}" width="{{elem.icon.h}}">
+                Count: {{elem.data.count}} <br />
+            </div>
+        </fieldset>
+    </span>
 </div>

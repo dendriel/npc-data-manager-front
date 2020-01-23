@@ -29,6 +29,27 @@ function DashboardController($location, CoreGenericService, sharedData) {
     self.changeRoute = function(newRoute) {
         $location.path(newRoute);
     };
+
+    self.elements = [
+        {
+            data: self.npc,
+            legend: "NPCs",
+            bgcolor: "#E8F8FF",
+            icon: {
+                image: "images\\bandit01.png",
+                w: 80, h: 80
+            },
+        },
+        {
+            data: self.item,
+            legend: "Items",
+            bgcolor: "#fff3cd",
+            icon: {
+                image: "images\\icon_iron_dagger.png",
+                w: 64, h: 64
+            },
+        }
+    ]
 }
 
 angular
