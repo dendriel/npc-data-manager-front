@@ -1,0 +1,30 @@
+<div>
+    <button  ng-click='$ctrl.save()'>Save</button>
+    <fieldset>
+        <legend>{{$ctrl.enemyData.name}}</legend>
+        <table>
+            <tr>
+                <td style="background-color:#ffddb0">
+                    <fieldset>
+                        <legend>General</legend>
+                        UID: <input type="text" name="id" readonly ng-model="$ctrl.enemyData.uid"><br />
+                        Name: <input ng-model='$ctrl.enemyData.name'><br />
+                        Behavior Id: <input type="number" ng-model='$ctrl.enemyData.behaviorId'><br />
+                        Is Facing Right: <input type="checkbox" ng-model='$ctrl.enemyData.facingRight'>
+                    </fieldset>
+                </td>
+                <td style="background-color:lightyellow;">
+                    <sprite data='$ctrl.enemyData.spriteData'></sprite>
+                </td>
+                <td style="background-color:#E8F8FF">
+                    <status data='$ctrl.enemyData.status'></status>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <loot-holder data='$ctrl.enemyData.lootHolder'></loot-holder>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</div>

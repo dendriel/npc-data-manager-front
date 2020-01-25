@@ -23,9 +23,9 @@ angular
                 .when('/enemy/list', {
                     template: '<enemy-list></enemy-list>'
                 })
-                // .when('/enemy/edit', {
-                //     template: '<enemy-edit></enemy-edit>'
-                // })
+                .when('/enemy/edit', {
+                    template: '<enemy-edit></enemy-edit>'
+                })
                 // ITEMS
                 .when('/item/list', {
                     template: '<item-list></item-list>'

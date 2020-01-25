@@ -11,6 +11,15 @@ function EnemyHandlerListController($location, CoreGenericService, sharedData, F
             sharedData.setParam("enemies", res.data);
         });
 
+    self.edit = (entity) => {
+        sharedData.setParam("enemy", entity);
+        self.changeRoute('/enemy/edit');
+    };
+
+    self.changeRoute = function(newRoute) {
+        $location.path(newRoute);
+    };
+
     FeedbackBarService.hide();
 }
 

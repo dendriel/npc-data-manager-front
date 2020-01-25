@@ -1,0 +1,23 @@
+<fieldset  style="background-color:#E8F8FF; padding-bottom:15px">
+    <legend>Loot Holder</legend>
+    <table>
+        <tr>
+            <td>Holder: <input type="text" ng-model='$ctrl.data.lootItemHolder'></td>
+            <td>Chance: <input type="number" id="numberInput" ng-model='$ctrl.data.chance'></td>
+        </tr>
+        <tr>
+            <td><b>Items</b></td>
+        </tr>
+        <tr ng-repeat="item in $ctrl.data.loot track by $index">
+            <td>Item: <input type="text" ng-model='$ctrl.data.loot[$index].item'></td>
+            <td>Count: <input type="number" id="numberInput" ng-model='$ctrl.data.loot[$index].count'></td>
+            <td>Chance: <input type="number" id="numberInput" ng-model='$ctrl.data.loot[$index].chance'></td>
+            <td><button ng-click='$ctrl.removeElementFromArray($ctrl.data.loot, $ctrl.data.loot[$index])'>Remove</button></td>
+        </tr>
+        <tr>
+            <td>
+                <button ng-click='$ctrl.addElementToArray($ctrl.data.loot, {item:"", count:1, chance:100})'>Add Item</button>
+            </td>
+        </tr>
+    </table>
+</fieldset>

@@ -1,20 +1,20 @@
-<fieldset style="background-color:lightyellow; float:left">
+<fieldset style="background-color:lightyellow; padding-bottom:15px">
     <legend>Sprite</legend>
-    Enabled: <input type="checkbox" ng-model='$ctrl.spriteData.enabled'>
+    Enabled: <input type="checkbox" ng-model='$ctrl.data.enabled'>
     <br/>
-    Order: <input type="number" id="numberInput" ng-model='$ctrl.spriteData.order'>
+    Order: <input type="number" id="numberInput" ng-model='$ctrl.data.order'>
     <br/>
     <span>
         Offset
-        X: <input type="number" id="numberInput" ng-model='$ctrl.spriteData.offset.x'>
-        Y: <input type="number" id="numberInput" ng-model='$ctrl.spriteData.offset.y'>
+        X: <input type="number" id="numberInput" ng-model='$ctrl.data.offset.x'>
+        Y: <input type="number" id="numberInput" ng-model='$ctrl.data.offset.y'>
     </span>
     <br/>
     <span>
         Scale
-        W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.spriteData.scale.width'>
-        H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.spriteData.scale.height'>
+        W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.scale.width'>
+        H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.scale.height'>
         </span>
     <br/>
-    Image File: <input type="text" name="spriteData_imageFile" ng-model='$ctrl.spriteData.imageFile'>
+    Image File: <input type="text" name="data_imageFile" ng-model='$ctrl.data.imageFile'>
 </fieldset>

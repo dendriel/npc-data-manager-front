@@ -1,8 +1,6 @@
 'use strict';
 
 function SpriteController() {
-    let self = this;
-    console.log(self.spriteData);
 }
 
 angular
@@ -11,6 +9,6 @@ angular
         templateUrl: 'modules/shared-components/sprite/sprite.template.html',
         controller: [SpriteController],
         bindings: {
-            spriteData: '='
+            data: '='
         }
     });
