@@ -1,7 +1,6 @@
 <fieldset  style="background-color:#E8F8FF; padding-bottom:15px">
     <legend>Loot Holder</legend>
     <table>
-
         <tr>
             <td><b>Holder</b></td>
         </tr>
@@ -14,8 +13,6 @@
         <tr>
             <td><b>Items</b></td>
         </tr>
-
-        </select>
         <tr ng-repeat="itema in $ctrl.data.loot track by $index">
             <td>
                 <select class="form-control" ng-options="item.name for item in $ctrl.items track by item.uid" ng-model="$ctrl.data.loot[$index].uid"></select>

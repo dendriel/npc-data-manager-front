@@ -62,7 +62,7 @@
                 Image File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data.iconData.imageFile'>
             </fieldset>
 
-            <sprite sprite-data='$ctrl.data.spriteData'></sprite>
+            <sprite data='$ctrl.data.spriteData'></sprite>
         </div>
 
         <div ng-hide='$ctrl.data.type !== "wearable"'>
@@ -134,7 +134,7 @@
             <div ng-hide='$ctrl.data.status.minRange <= 0'>
                 <fieldset style="background-color:#E8F8FF; width:30%; float:left">
                     <legend>Aim</legend>
-                    <sprite sprite-data='$ctrl.data.aim.aimSprite'></sprite>
+                    <sprite data='$ctrl.data.aim.aimSprite'></sprite>
                 </fieldset>
             </div>
 

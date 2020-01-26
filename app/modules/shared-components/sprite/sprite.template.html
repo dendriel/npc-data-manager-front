@@ -1,20 +1,42 @@
 <fieldset style="background-color:lightyellow; padding-bottom:15px">
     <legend>Sprite</legend>
-    Enabled: <input type="checkbox" ng-model='$ctrl.data.enabled'>
-    <br/>
-    Order: <input type="number" id="numberInput" ng-model='$ctrl.data.order'>
-    <br/>
-    <span>
-        Offset
-        X: <input type="number" id="numberInput" ng-model='$ctrl.data.offset.x'>
-        Y: <input type="number" id="numberInput" ng-model='$ctrl.data.offset.y'>
-    </span>
-    <br/>
-    <span>
-        Scale
-        W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.scale.width'>
-        H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.scale.height'>
-        </span>
-    <br/>
-    Image File: <input type="text" name="data_imageFile" ng-model='$ctrl.data.imageFile'>
+    <table>
+        <tr>
+            <td>Enabled: <input type="checkbox" ng-model='$ctrl.data.enabled'></td>
+            <td rowspan="2">
+                <img ng-src="images\{{$ctrl.data.imageFile}}" alt="enemy_icon" style="float:right;margin-right:5px" height="80" width="80">
+            </td>
+        </tr>
+        <tr>
+            <td>Order: <input type="number" id="numberInput" ng-model='$ctrl.data.order'></td>
+        </tr>
+        <tr>
+            <td><b>Offset</b></td>
+        </tr>
+        <tr>
+            <td>
+                X: <input type="number" id="numberInput" ng-model='$ctrl.data.offset.x'>
+                Y: <input type="number" id="numberInput" ng-model='$ctrl.data.offset.y'>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Scale</b></td>
+        </tr>
+        <tr>
+            <td>
+                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.scale.width'>
+                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.scale.height'>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Image</b></td>
+        </tr>
+        <tr>
+            <td>File: <input type="text" name="data_imageFile" ng-model='$ctrl.data.imageFile'>
+            </td>
+<!--            <td>-->
+<!--                <img ng-src="images\{{$ctrl.data.imageFile}}" alt="enemy_icon" style="float:left;margin-right:5px" height="80" width="80">-->
+<!--            </td>-->
+        </tr>
+    </table>
 </fieldset>
