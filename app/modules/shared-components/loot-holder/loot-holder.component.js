@@ -1,6 +1,6 @@
 'use strict';
 
-function LootHolderController() {
+function LootHolderController(sharedData, CoreGenericService) {
     let self = this;
 
     self.addElementToArray = (arr, elem) => {
@@ -16,13 +16,29 @@ function LootHolderController() {
             FeedbackBarService.error("Couldn't remove element from array.")
         }
     };
+
+    self.$onInit = function() {
+        if (self.options !== undefined) {
+            self.initialize();
+        }
+    };
+
+    self.items = sharedData.getParam("items");
+    if (self.items === null || self.items === undefined) {
+        CoreGenericService
+            .getAll("item")
+            .then((res) => {
+                self.items = res.data;
+                sharedData.setParam("items", res.data);
+            });
+    }
 }
 
 angular
     .module('sharedcomponents')
     .component('lootHolder', {
         templateUrl: 'modules/shared-components/loot-holder/loot-holder.template.html',
-        controller: [LootHolderController],
+        controller: ['CoreSharedDataService', 'CoreGenericService', LootHolderController],
         bindings: {
             data: '='
         }

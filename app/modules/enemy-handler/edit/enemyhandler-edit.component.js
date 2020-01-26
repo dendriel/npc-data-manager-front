@@ -16,6 +16,11 @@ function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sh
         return lastUid+1;
     };
 
+    self.setupLootHolder = (lootHolder) => {
+        lootHolder.loot.forEach((loot) => { loot.uid = { uid: loot.uid } });
+        lootHolder.uid = { uid: lootHolder.uid };
+    };
+
     self.enemyData = sharedData.getParam("enemy");
     console.log("Edit enemy: " + self.enemyData);
     if (self.enemyData === null || self.enemyData === undefined) {
@@ -29,16 +34,26 @@ function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sh
             facingRight: false,
             idAsText: null,
             wearableHolder: { minAttack:0, maxAttack:0, defense:0 },
-            lootHolder: { name:null, lootItemHolder: "Loot Bag", chance:100, loot:[] }
+            lootHolder: { uid: 1, name: "", chance:100, loot:[] }
         }
+    }
+    else {
+        self.setupLootHolder(self.enemyData.lootHolder);
     }
 
     self.save = () => {
+        // Reset uid to its original object format.
+        self.enemyData.lootHolder.loot.forEach((loot) => {
+            loot.uid = loot.uid.uid;
+        });
+        self.enemyData.lootHolder.uid = self.enemyData.lootHolder.uid.uid;
+
         CoreGenericService
             .save(entity, self.enemyData)
             .then((res) => {
                 if (res.status === 200) {
                     FeedbackBarService.info("Entity saved successfully!");
+                    self.setupLootHolder(res.data.lootHolder);
                     self.enemyData = res.data;
                 } else {
                     FeedbackBarService.error("Failed to save! Status: " + res.status);
