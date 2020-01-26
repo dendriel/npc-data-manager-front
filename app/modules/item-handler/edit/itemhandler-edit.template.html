@@ -1,7 +1,7 @@
 <div>
     <button  ng-click='$ctrl.save()'>Save</button>
     <fieldset>
-        <legend>{{$ctrl.data.name}}</legend>
+        <legend>{{$ctrl.operationTitle}} {{$ctrl.data.name}}</legend>
         <div>
             <fieldset style="background-color:#ffddb0; width:30%; float:left">
                 <legend>General</legend>
@@ -48,19 +48,20 @@
                     </tr>
                 </table>
             </fieldset>
-            <fieldset style="background-color:lightcyan; width:30%; float:left">
-                <legend>Icon</legend>
-                Rect<br />
-                X: <input type="number" id="numberInput" ng-model='$ctrl.data.iconData.rect.x'>
-                Y: <input type="number" id="numberInput" ng-model='$ctrl.data.iconData.rect.y'>
-                </span>
-                <br />
-                <span>
-                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.iconData.rect.width'>
-                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.iconData.rect.height'>
-                </span><br />
-                Image File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data.iconData.imageFile'>
-            </fieldset>
+            <icon data="$ctrl.data.iconData"></icon>
+<!--            <fieldset style="background-color:lightcyan; width:30%; float:left">-->
+<!--                <legend>Icon</legend>-->
+<!--                Rect<br />-->
+<!--                X: <input type="number" id="numberInput" ng-model='$ctrl.data.iconData.rect.x'>-->
+<!--                Y: <input type="number" id="numberInput" ng-model='$ctrl.data.iconData.rect.y'>-->
+<!--                </span>-->
+<!--                <br />-->
+<!--                <span>-->
+<!--                W: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.iconData.rect.width'>-->
+<!--                H: <input type="number" id="numberInput" step="0.001" ng-model='$ctrl.data.iconData.rect.height'>-->
+<!--                </span><br />-->
+<!--                Image File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data.iconData.imageFile'>-->
+<!--            </fieldset>-->
 
             <sprite data='$ctrl.data.spriteData'></sprite>
         </div>

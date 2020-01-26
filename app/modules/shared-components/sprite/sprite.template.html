@@ -1,11 +1,8 @@
-<fieldset style="background-color:lightyellow; padding-bottom:15px">
+<fieldset style="background-color:lightyellow; width:33.3%; padding-bottom:15px">
     <legend>Sprite</legend>
     <table>
         <tr>
             <td>Enabled: <input type="checkbox" ng-model='$ctrl.data.enabled'></td>
-            <td rowspan="2">
-                <img ng-src="images\{{$ctrl.data.imageFile}}" alt="enemy_icon" style="float:right;margin-right:5px" height="80" width="80">
-            </td>
         </tr>
         <tr>
             <td>Order: <input type="number" id="numberInput" ng-model='$ctrl.data.order'></td>
@@ -29,14 +26,19 @@
             </td>
         </tr>
         <tr>
-            <td><b>Image</b></td>
+            <td><n-image data="$ctrl.data.imageFile"></n-image></td>
         </tr>
-        <tr>
-            <td>File: <input type="text" name="data_imageFile" ng-model='$ctrl.data.imageFile'>
-            </td>
-<!--            <td>-->
-<!--                <img ng-src="images\{{$ctrl.data.imageFile}}" alt="enemy_icon" style="float:left;margin-right:5px" height="80" width="80">-->
+<!--        <tr>-->
+<!--            <td><b>Image</b></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>File: <input type="text" name="data_imageFile" ng-model='$ctrl.data.imageFile'></td>-->
+<!--            <td rowspan="2">-->
+<!--                <img ng-src="images\{{$ctrl.data.imageFile}}" alt="enemy_icon" style="float:right;margin-right:5px" height="80" width="80">-->
 <!--            </td>-->
-        </tr>
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <img ng-src="images\{{$ctrl.data.imageFile}}" alt="enemy_icon" style="float:left;margin-right:5px" height="80" width="80">&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--        </tr>-->
     </table>
 </fieldset>

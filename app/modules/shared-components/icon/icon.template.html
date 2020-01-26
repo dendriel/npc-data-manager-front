@@ -1,0 +1,23 @@
+<fieldset style="background-color:lightcyan; width:33.3%; float:left; padding-bottom: 15px; padding-right: 15px">
+    <legend>Icon</legend>
+    <table>
+        <tr>
+            <td><b>Rect</b></td>
+        </tr>
+        <tr>
+            <td>
+                X: <input type="number" id="numberInput" step="1" ng-model='$ctrl.data.rect.x'>
+                Y: <input type="number" id="numberInput" step="1" ng-model='$ctrl.data.rect.y'>
+                W: <input type="number" id="numberInput" step="1" ng-model='$ctrl.data.rect.width'>
+                H: <input type="number" id="numberInput" step="1" ng-model='$ctrl.data.rect.height'>
+            </td>
+        </tr>
+        <tr>
+            <td><n-image data="$ctrl.data.imageFile"></n-image></td>
+<!--            <td>File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data.imageFile'></td>-->
+<!--            <td rowspan="2">-->
+<!--                <img ng-src="images\{{$ctrl.data.imageFile}}" alt="enemy_icon" style="float:right;margin-right:5px" height="80" width="80">-->
+<!--            </td>-->
+        </tr>
+    </table>
+</fieldset>

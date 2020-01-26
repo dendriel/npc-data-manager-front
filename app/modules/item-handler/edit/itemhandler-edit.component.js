@@ -66,15 +66,17 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
         if (self.data !== null && self.data !== undefined && self.data.uid !== null) {
             console.log("Edit Item");
             self.fixData(self.data);
+            self.operationTitle = "Editing";
             return;
         }
         else if (self.data !== null && self.data.uid === null) {
             console.log("Clone Item");
             self.data.uid = self.findNextItemUid();
             self.fixData(self.data);
+            self.operationTitle = "Cloning";
             return;
         }
-
+        self.operationTitle = "Creating";
         console.log("Create Item");
         self.data = {
             type: "gold",
