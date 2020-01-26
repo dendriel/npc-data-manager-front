@@ -10,6 +10,14 @@ function ItemHandlerListController($location, CoreGenericService, sharedData, Fe
         self.changeRoute('/item/edit');
     };
 
+    self.clone = (item) => {
+        let clone = JSON.parse(JSON.stringify(item));
+        clone.idAsText = null;
+        clone.uid = null;
+        sharedData.setParam("item", clone);
+        self.changeRoute('/item/edit');
+    };
+
     self.remove = (item) => {
         let remove = confirm("Do you really want to remove " + item.name + "?");
         if (remove === false) {

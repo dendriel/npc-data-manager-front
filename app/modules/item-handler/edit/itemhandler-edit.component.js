@@ -62,11 +62,19 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
       }
     };
 
-    self.initiliaze = () => {
-        if (self.data !== null && self.data !== undefined) {
+    self.initialize = () => {
+        if (self.data !== null && self.data !== undefined && self.data.uid !== null) {
+            console.log("Edit Item");
             self.fixData(self.data);
             return;
         }
+        else if (self.data !== null && self.data.uid === null) {
+            console.log("Clone Item");
+            self.data.uid = self.findNextItemUid();
+            self.fixData(self.data);
+            return;
+        }
+
         console.log("Create Item");
         self.data = {
             type: "gold",
@@ -108,13 +116,13 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
             .getAll(entity)
             .then((res) => {
                 sharedData.setParam("items", res.data);
-                self.initiliaze();
+                self.initialize();
             })
             .catch(reason =>
                 FeedbackBarService.error("Failed to get all items! Status: " + reason.status + ". Error: " + reason.data.error)
             );
     } else {
-        self.initiliaze();
+        self.initialize();
     }
 }
 
