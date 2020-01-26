@@ -23,8 +23,18 @@ function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sh
 
     self.enemyData = sharedData.getParam("enemy");
     console.log("Edit enemy: " + self.enemyData);
-    if (self.enemyData === null || self.enemyData === undefined) {
-        console.log("Create Enemy");
+
+    if (self.enemyData !== null && self.enemyData !== undefined && self.enemyData.uid !== null) {
+        self.operationTitle = "Editing";
+        self.setupLootHolder(self.enemyData.lootHolder);
+    }
+    else if (self.enemyData !== null && self.enemyData !== undefined && self.enemyData.uid === null) {
+        self.operationTitle = "Cloning";
+        self.enemyData.uid = self.findNextEnemyUid();
+        self.setupLootHolder(self.enemyData.lootHolder);
+    }
+    else {
+        self.operationTitle = "Creating";
         self.enemyData = {
             name: "FIX ME",
             uid: self.findNextEnemyUid(),
@@ -35,10 +45,7 @@ function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sh
             idAsText: null,
             wearableHolder: { minAttack:0, maxAttack:0, defense:0 },
             lootHolder: { uid: 1, name: "", chance:100, loot:[] }
-        }
-    }
-    else {
-        self.setupLootHolder(self.enemyData.lootHolder);
+        };
     }
 
     self.save = () => {

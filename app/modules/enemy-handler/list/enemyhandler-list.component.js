@@ -2,18 +2,27 @@
 
 function EnemyHandlerListController($location, CoreGenericService, sharedData, FeedbackBarService) {
     let self = this;
-    sharedData.setParam("enemy", null);
+    const entity = "enemy";
+    sharedData.setParam(entity, null);
 
     CoreGenericService
-        .getAll('enemy')
+        .getAll(entity)
         .then((res) => {
             self.enemies = res.data;
             sharedData.setParam("enemies", res.data);
         });
 
-    self.edit = (entity) => {
-        sharedData.setParam("enemy", entity);
-        self.changeRoute('/enemy/edit');
+    self.edit = (elem) => {
+        sharedData.setParam(entity, elem);
+        self.changeRoute('/' + entity + '/edit');
+    };
+
+    self.clone = (elem) => {
+        let clone = JSON.parse(JSON.stringify(elem));
+        clone.idAsText = null;
+        clone.uid = null;
+        sharedData.setParam(entity, clone);
+        self.changeRoute('/' + entity + '/edit');
     };
 
     self.changeRoute = function(newRoute) {

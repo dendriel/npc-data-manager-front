@@ -1,13 +1,13 @@
 <div>
     <button  ng-click='$ctrl.save()'>Save</button>
     <fieldset>
-        <legend>{{$ctrl.enemyData.name}}</legend>
+        <legend>{{$ctrl.operationTitle}} {{$ctrl.enemyData.name}}</legend>
         <table>
             <tr>
                 <td style="background-color:#ffddb0">
                     <fieldset>
                         <legend>General</legend>
-                        UID: <input type="text" name="id" readonly ng-model="$ctrl.enemyData.uid"><br />
+                        UID: <input type="text" name="id" ng-model="$ctrl.enemyData.uid"><br />
                         Name: <input ng-model='$ctrl.enemyData.name'><br />
                         Behavior Id: <input type="number" ng-model='$ctrl.enemyData.behaviorId'><br />
                         Is Facing Right: <input type="checkbox" ng-model='$ctrl.enemyData.facingRight'>

@@ -1,16 +1,17 @@
 <ul style="width:65%; padding-bottom: 50px;">
-    <li ng-repeat="enemy in $ctrl.enemies" style="padding-bottom: 10px; padding-top: 10px">
+    <li ng-repeat="elem in $ctrl.enemies" style="padding-bottom: 10px; padding-top: 10px">
         <fieldset style="background-color: #e0e0eb">
-            <legend style="font-size: 24px;">{{enemy.name}} ({{enemy.uid}})</legend>
+            <legend style="font-size: 24px;">{{elem.name}} ({{elem.uid}})</legend>
             <div style="float:left; width:400px">
-                <button type="input" ng-click="$ctrl.edit(enemy)" style="float:left;width:50px;height:70px; margin-right:10px; margin-bottom: 5px">Edit</button>
-                <img ng-src="images\{{enemy.spriteData.imageFile}}" ng-hide='!enemy.spriteData.enabled' alt="enemy_icon" style="float:left;margin-right:5px" height="80" width="80">
-                UID: {{enemy.uid}} <br />
-                Image: {{enemy.spriteData.imageFile}}<br />
-                Behavior ID: {{enemy.behaviorId}}
+                <button type="input" ng-click="$ctrl.edit(elem)" style="float:left;width:50px;height:70px; margin-right:10px; margin-bottom: 5px">Edit</button>
+                <img ng-src="images\{{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left;margin-right:5px" height="80" width="80">
+                UID: {{elem.uid}} <br />
+                Image: {{elem.spriteData.imageFile}}<br />
+                Behavior ID: {{elem.behaviorId}}
             </div>
             <div style="float:right">
-                <button type="input" ng-click="$ctrl.remove(enemy)" style="float:left;height:70px; margin-right:10px; margin-bottom: 5px">Remove</button>
+                <button type="input" ng-click="$ctrl.clone(elem)" style="float:left;width:60px;height:70px; margin-right:10px; margin-bottom: 5px">Clone</button>
+                <button type="input" ng-click="$ctrl.remove(elem)" style="float:left;height:70px; margin-right:10px; margin-bottom: 5px">Remove</button>
             </div>
         </fieldset>
     </li>
