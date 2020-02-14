@@ -135,13 +135,14 @@
                     <li ng-repeat="mod in $ctrl.data.statusModifiersData" style="padding-top:5px; padding-bottom: 5px">
                         <td>Life Mod: <input type="number" id="numberInput" ng-model='mod.lifeModifier'></td>
                         <td>Mana Mod: <input type="number" id="numberInput" ng-model='mod.manaModifier'></td>
+                        <td>Skill Mod: <input type="number" id="numberInput" ng-model='mod.skillModifier'></td>
                         <div style="float:right">
                             <button ng-click='$ctrl.removeElementFromArray($ctrl.data.statusModifiersData, mod)'>Remove</button>
                         </div>
                     </li>
                 </ul>
                 <div style="padding-bottom: 5px">
-                    <button ng-click='$ctrl.addElementToArray($ctrl.data.statusModifiersData, {lifeModifier: 0, manaModifier: 0})'>Add Modifier</button>
+                    <button ng-click='$ctrl.addElementToArray($ctrl.data.statusModifiersData, {lifeModifier: 0, manaModifier: 0, skillModifier: 0})'>Add Modifier</button>
                 </div>
             </fieldset>
         </div>
