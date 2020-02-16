@@ -98,7 +98,7 @@
                     <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addEventState(inter.updateEventsState)'>Add Event</button></div>
                 </ul>
 
-                <span ng-hide='inter.type !== "MERCHANT"'>
+                <span ng-hide='inter.type !== "MERCHANT" && inter.type !== "GIVE_ITEM"'>
                     Price Multiplier: <input type="number" step="0.01" id="numberInput" ng-model='inter.priceMultiplier'><br />
                     <ul style="background:#b8daff;">
                         Items:
