@@ -34,7 +34,9 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
 
     self.addEventState = (eventsState) => {
         eventsState.push({
-            type: "SWITCH"
+            type: "SWITCH",
+            key: "FIX ME",
+            value: false
         })
     };
 
