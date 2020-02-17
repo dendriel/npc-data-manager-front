@@ -72,7 +72,7 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
                 style: 0,
                 size: 20,
                 color: {r:255, g:255, b:255},
-                rect: {x:16, y:32, width:920, height:64},
+                rect: {x:16, y:48, width:380, height:128},
                 verticalAlignment: 1,
                 horizontalAlignment: 2
             }
