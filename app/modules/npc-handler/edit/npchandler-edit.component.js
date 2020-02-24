@@ -31,6 +31,14 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
             idAsText: null
         }
     }
+    else {
+        // Minor fixer for the new decisions feature.
+        self.npcData.interactionData.forEach(inter => {
+            if (inter.decision === undefined || inter.decision === null || inter.decision.selectOptions === null) {
+                inter.decision = {selectOptions:[]};
+            }
+        });
+    }
 
     self.addEventState = (eventsState) => {
         eventsState.push({
@@ -81,12 +89,26 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
         self.addElementToArray(arr, msg);
     };
 
+    self.addOption = (arr) => {
+      let opt = {
+          label: {
+              text: "FIX ME"
+          },
+          updateEventsState: [],
+          isLoopback: false,
+          loopbackToChapter: -1
+      };
+
+        self.addElementToArray(arr, opt);
+    };
+
     self.addInteraction = () => {
         let interId = self.findNextInteractionId();
         let inter = {
             id: interId,
             type: "DIALOG",
             messages: [],
+            decision : { selectOptions: [] },
             priceMultiplier: 0,
             items: [],
             requireEventsState: [],

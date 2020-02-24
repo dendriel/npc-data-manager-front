@@ -7,7 +7,7 @@
             <fieldset style="background-color:#ffddb0; width:20%; float:left">
                 <legend>General</legend>
                 UID: <input type="text" name="id" readonly ng-model="$ctrl.npcData.uid"><br />
-                Name: <input ng-model='$ctrl.npcData.name'><br />
+                Name: <input type="text" ng-model='$ctrl.npcData.name'><br />
                 Map: <input ng-model='$ctrl.npcData.mapName'><br />
                 Behavior Id: <input type="number" ng-model='$ctrl.npcData.behaviorId'><br />
                 Is Facing Right: <input type="checkbox" ng-model='$ctrl.npcData.facingRight'>
@@ -39,6 +39,7 @@
                 <br />
                 Type: <select ng-model='inter.type'>
                     <option value="DIALOG">Dialog</option>
+                    <option value="DECISION">Decision</option>
                     <option value="MERCHANT">Merchant</option>
                     <option value="GIVE_ITEM">Give Item</option>
                     <option value="PLAY_SOUND">Play Sound</option>
@@ -47,56 +48,17 @@
                 </select>
                 <br />
 
-                <span style="float:left">Required Events State:</span>
-                <br />
-                <ul style="background:#b8daff;">
-                    <li ng-repeat="reqState in inter.requireEventsState" style="padding-top:10px; padding-bottom: 10px">
-                        <select name="Type: " ng-model='reqState.type'>
-                            <option value="SWITCH">Switch</option>
-                            <option value="QUEST_ITEM">Quest Item</option>
-                            <option value="NO_ENEMIES_IN_AREA">No Enemies in Area</option>
-                        </select>
-                        <span ng-hide='reqState.type !== "SWITCH"'>
-                            Key:<input type="text" ng-model='reqState.key' style="width: 350px">
-                            State: <input type="checkbox" ng-model='reqState.value'>
-                        </span>
-                        <span ng-hide='reqState.type !== "NO_ENEMIES_IN_AREA"'>
-                            TargetX: <input type="number" ng-model='reqState.targetX' style="width: 60px">
-                            TargetY: <input type="number" ng-model='reqState.targetY' style="width: 60px">
-                        </span>
-                        <span ng-hide='reqState.type !== "QUEST_ITEM"'>
-                            TargetEntity:<input type="text" ng-model='reqState.targetEntity' style="width: 350px">
-                        </span>
-                        <button  ng-click='$ctrl.removeElementFromArray(inter.requireEventsState, reqState)' style="margin-left: 100px">Remove</button>
-                    </li>
-                    <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addEventState(inter.requireEventsState)'>Add Event</button></div>
-                </ul>
+                <div style="background:#b8daff;">
+                    <span style="float:left"><b>Required Events State:</b></span>
+                    <br />
+                    <event-state data='inter.requireEventsState'></event-state>
+                </div>
 
-                <!-- TODO: find a way to reuse the code for events. -->
-                <span style="float:left">Update Events State:</span>
-                <br />
-                <ul style="background:#66b0ff;">
-                    <li ng-repeat="updState in inter.updateEventsState" style="padding-top:10px; padding-bottom: 10px">
-                        <select name="Type: " ng-model='updState.type'>
-                            <option value="SWITCH">Switch</option>
-                            <option value="QUEST_ITEM">Quest Item</option>
-                            <option value="NO_ENEMIES_IN_AREA">No Enemies in Area</option>
-                        </select>
-                        <span ng-hide='updState.type !== "SWITCH"'>
-                            Key:<input type="text" ng-model='updState.key' style="width: 350px">
-                            State: <input type="checkbox" ng-model='updState.value'>
-                        </span>
-                        <span ng-hide='updState.type !== "NO_ENEMIES_IN_AREA"'>
-                            TargetX: <input type="number" ng-model='updState.targetX' style="width: 60px">
-                            TargetY: <input type="number" ng-model='updState.targetY' style="width: 60px">
-                        </span>
-                        <span ng-hide='updState.type !== "QUEST_ITEM"'>
-                            TargetEntity:<input type="text" ng-model='updState.targetEntity' style="width: 350px">
-                        </span>
-                        <button  ng-click='$ctrl.removeElementFromArray(inter.updateEventsState, updState)' style="margin-left: 100px">Remove</button>
-                    </li>
-                    <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addEventState(inter.updateEventsState)'>Add Event</button></div>
-                </ul>
+                <div style="background:#66b0ff;">
+                <span style="float:left;"><b>Update Events State:</b></span>
+                    <br />
+                    <event-state data='inter.updateEventsState'></event-state>
+                </div>
 
                 <span ng-hide='inter.type !== "MERCHANT" && inter.type !== "GIVE_ITEM"'>
                     Price Multiplier: <input type="number" step="0.01" id="numberInput" ng-model='inter.priceMultiplier'><br />
@@ -122,6 +84,37 @@
                     Target Data: <input type="text" ng-model='inter.targetData' style="width: 350px">
                 </span>
                 <br />
+
+                <span ng-hide='inter.type !== "DECISION"'>
+                    <fieldset style="background-color:#afbf7f">
+                        <legend>Title</legend>
+                        <div style="background-color:#5cb1af">
+                            <div style="float:left;"><textarea rows="1" cols="100" ng-model='inter.decision.title.text'></textarea></div>
+                        </div>
+                    </fieldset>
+
+                        <ul style="background:#b8daff;">
+                            <li ng-repeat="option in inter.decision.selectOptions" style="padding-top:5px; padding-bottom: 5px">
+                            <fieldset style="background-color:#afbf7f">
+                                <legend>Option</legend>
+                                Text: <input type="text" rows="1" cols="100" ng-model='option.label.text'><br />
+
+                                <div>
+                                    <span style="float:left"><b>Update Events State:</b></span>
+                                    <br />
+                                    <event-state data='option.updateEventsState'></event-state>
+                                </div>
+
+                            <div style="padding-top:10px; padding-bottom: 5px">
+                                <button ng-click='$ctrl.removeElementFromArray(inter.decision.selectOptions, option)'>Remove Option</button>
+                            </div>
+                            </fieldset>
+                            </li>
+                        </ul>
+                    <div style="padding-top:10px; padding-bottom: 5px">
+                        <button  ng-click='$ctrl.addOption(inter.decision.selectOptions)'>Add Option</button>
+                    </div>
+                </span>
 
                 <span ng-hide='inter.type !== "DIALOG"'>
                     <ul style="background:#b8daff;">

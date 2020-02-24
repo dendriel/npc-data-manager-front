@@ -1,0 +1,22 @@
+<ul>
+    <li ng-repeat="reqState in $ctrl.data" style="padding-top:10px; padding-bottom: 10px">
+        <select name="Type: " ng-model='reqState.type'>
+            <option value="SWITCH">Switch</option>
+            <option value="QUEST_ITEM">Quest Item</option>
+            <option value="NO_ENEMIES_IN_AREA">No Enemies in Area</option>
+        </select>
+        <span ng-hide='reqState.type !== "SWITCH"'>
+                            Key:<input type="text" ng-model='reqState.key' style="width: 350px">
+                            State: <input type="checkbox" ng-model='reqState.value'>
+                        </span>
+        <span ng-hide='reqState.type !== "NO_ENEMIES_IN_AREA"'>
+                            TargetX: <input type="number" ng-model='reqState.targetX' style="width: 60px">
+                            TargetY: <input type="number" ng-model='reqState.targetY' style="width: 60px">
+                        </span>
+        <span ng-hide='reqState.type !== "QUEST_ITEM"'>
+                            TargetEntity:<input type="text" ng-model='reqState.targetEntity' style="width: 350px">
+                        </span>
+        <button  ng-click='$ctrl.removeElementFromArray($ctrl.data, reqState)' style="margin-left: 100px">Remove</button>
+    </li>
+    <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addEventState($ctrl.data)'>Add Event</button></div>
+</ul>
