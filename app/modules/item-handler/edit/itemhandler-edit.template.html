@@ -54,34 +54,18 @@
         </div>
 
         <div ng-hide='$ctrl.data.type !== "wearable"'>
-            <fieldset style="background-color:#E8F8FF; width:30%; float:left">
-                <legend>Status</legend>
-                <table>
-                    <tr>
-                        <td>Attack:</td>
-                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.status.minAttack'>-</td>
-                        <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.status.maxAttack'></td>
-                    </tr>
-                    <tr>
-                        <td>Defense:</td>
-                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.status.defense'></td>
-                    </tr>
-                    <tr>
-                        <td>Range:</td>
-                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.status.minRange'>-</td>
-                        <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.status.maxRange'></td>
-                    </tr>
-                    <tr>
-                        <td>Ammo Type:</td>
-                        <td>
-                            <select ng-model='$ctrl.data.ammoType'>
-                                <option value="NONE">None</option>
-                                <option value="ARROW">Arrow</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
+            <wearable-status data='$ctrl.data.status'></wearable-status>
+            <table>
+                <tr>
+                    <td>Ammo Type:</td>
+                    <td>
+                        <select ng-model='$ctrl.data.ammoType'>
+                            <option value="NONE">None</option>
+                            <option value="ARROW">Arrow</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
             <fieldset style="background-color:#E8F8FF; width:30%; float:left">
                 <legend>Slots</legend>
                 <ul>
