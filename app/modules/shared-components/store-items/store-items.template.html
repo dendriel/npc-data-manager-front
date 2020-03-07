@@ -1,0 +1,11 @@
+<ul style="background:#b8daff;">
+    Items:
+    <br />
+    <li ng-repeat="itemName in $ctrl.data track by $index" style="padding-top:5px; padding-bottom: 5px">
+        ID:<input type="number" ng-model='$ctrl.data[$index].id'>
+        Use Stack:<input type="checkbox" ng-model='$ctrl.data[$index].useStack'>
+        Stack Price Mod: <input type="number" ng-model='$ctrl.data[$index].stackPriceModifier'>
+        <button  ng-click='$ctrl.removeElementFromArray($ctrl.data, $ctrl.data[$index])' style="margin-left: 100px">Remove</button>
+    </li>
+    <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addElementToArray($ctrl.data, {id:0, useStack:false, stackPriceModifier:0})'>Add Item</button></div>
+</ul>

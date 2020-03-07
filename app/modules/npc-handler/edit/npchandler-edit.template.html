@@ -62,15 +62,7 @@
 
                 <span ng-hide='inter.type !== "MERCHANT" && inter.type !== "GIVE_ITEM"'>
                     Price Multiplier: <input type="number" step="0.01" id="numberInput" ng-model='inter.priceMultiplier'><br />
-                    <ul style="background:#b8daff;">
-                        Items:
-                        <br />
-                        <li ng-repeat="itemName in inter.items track by $index" style="padding-top:5px; padding-bottom: 5px">
-                            <input type="text" ng-model='inter.items[$index]'>
-                            <button  ng-click='$ctrl.removeElementFromArray(inter.items, inter.items[$index])' style="margin-left: 100px">Remove</button>
-                        </li>
-                        <div style="padding-top:10px; padding-bottom: 5px"><button  ng-click='$ctrl.addElementToArray(inter.items, "FIX ME")'>Add Item</button></div>
-                    </ul>
+                    <store-items data='inter.storeItems'></store-items>
                 </span>
 
 

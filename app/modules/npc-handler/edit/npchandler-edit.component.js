@@ -37,6 +37,10 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
             if (inter.decision === undefined || inter.decision === null || inter.decision.selectOptions === null) {
                 inter.decision = {selectOptions:[]};
             }
+
+            if (inter.storeItems === undefined || inter.storeItems === null) {
+                inter.storeItems = [];
+            }
         });
     }
 
@@ -110,7 +114,7 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
             messages: [],
             decision : { selectOptions: [] },
             priceMultiplier: 0,
-            items: [],
+            storeItems: [],
             requireEventsState: [],
             updateEventsState: [],
             targetId: 0,
