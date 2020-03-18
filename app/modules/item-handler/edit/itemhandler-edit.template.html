@@ -3,7 +3,7 @@
     <fieldset>
         <legend>{{$ctrl.operationTitle}} {{$ctrl.data.name}}</legend>
         <div>
-            <fieldset style="background-color:#ffddb0; width:30%; float:left">
+            <fieldset style="background-color:#ffddb0; float:left; padding-right:16px">
                 <legend>General</legend>
                 <table>
                     <tr>
@@ -21,6 +21,8 @@
                     <tr>
                         <td>UID:</td>
                         <td><input type="text" name="id" readonly ng-model="$ctrl.data.uid"></td>
+                        <td>Sell Stack:</td>
+                        <td><input type="checkbox" ng-model="$ctrl.data.sellAsStack"></td>
                     </tr>
                     <tr>
                         <td>Name:</td>
