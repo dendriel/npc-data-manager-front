@@ -26,7 +26,6 @@
 
 
         <ul>
-<!--        <li ng-repeat="inter in $ctrl.npcData.interactionData">-->
             <li ng-repeat="inter in $ctrl.getSortedInteractionData() track by $index">
             <fieldset style="background-color:#bde7a5">
                 <legend>{{inter.type}}</legend>

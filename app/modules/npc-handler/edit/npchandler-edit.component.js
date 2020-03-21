@@ -15,6 +15,13 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
         return lastUid+1;
     };
 
+
+    self.setupStoreItems = (storeItems) => {
+        storeItems.forEach(e => {
+            e.uid = { uid: e.id };
+        });
+    };
+
     console.log("Edit npc: " + sharedData.getParam("npc"));
     self.npcData = sharedData.getParam("npc");
     if (self.npcData === null || self.npcData === undefined) {
@@ -41,6 +48,8 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
             if (inter.storeItems === undefined || inter.storeItems === null) {
                 inter.storeItems = [];
             }
+
+            self.setupStoreItems(inter.storeItems);
         });
     }
 
@@ -142,12 +151,19 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
     };
 
     self.save = () => {
+        self.npcData.interactionData.forEach(i => {
+            i.storeItems.forEach(s => {
+                s.id = s.uid.uid;
+            })
+        });
+
         NpcHandlerService
             .save(self.npcData)
             .then((res) => {
                 if (res.status === 200) {
                     FeedbackBarService.info("NPC saved successfully!");
                     self.npcData = res.data;
+                    self.npcData.interactionData.forEach(i => self.setupStoreItems(i.storeItems));
                 } else {
                     FeedbackBarService.error("Failed to save NPC! Status: " + res.status);
                 }
