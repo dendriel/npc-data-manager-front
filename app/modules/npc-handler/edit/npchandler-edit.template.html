@@ -44,6 +44,7 @@
                     <option value="PLAY_SOUND">Play Sound</option>
                     <option value="TELEPORT">Teleport</option>
                     <option value="REMOVE_QUEST_ITEM">Remove Quest Item</option>
+                    <option value="CONTAINER">Container</option>
                 </select>
                 <br />
 
@@ -59,7 +60,7 @@
                     <event-state data='inter.updateEventsState'></event-state>
                 </div>
 
-                <span ng-hide='inter.type !== "MERCHANT" && inter.type !== "GIVE_ITEM"'>
+                <span ng-hide='inter.type !== "MERCHANT" && inter.type !== "GIVE_ITEM" && inter.type !== "CONTAINER"'>
                     Price Multiplier: <input type="number" step="0.01" id="numberInput" ng-model='inter.priceMultiplier'><br />
                     <store-items data='inter.storeItems'></store-items>
                 </span>
