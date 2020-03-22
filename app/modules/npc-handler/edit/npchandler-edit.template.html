@@ -45,6 +45,7 @@
                     <option value="TELEPORT">Teleport</option>
                     <option value="REMOVE_QUEST_ITEM">Remove Quest Item</option>
                     <option value="CONTAINER">Container</option>
+                    <option value="CHANGE_HERO_SPRITE">Change Hero Sprite</option>
                 </select>
                 <br />
 
@@ -65,9 +66,11 @@
                     <store-items data='inter.storeItems'></store-items>
                 </span>
 
+                <span ng-hide='inter.type !== "CHANGE_HERO_SPRITE" && inter.type !== "TELEPORT"'>
+                    Target Id: <input type="number" step="1" id="numberInput" ng-model='inter.targetId'>
+                </span>
 
                 <span ng-hide='inter.type !== "TELEPORT"'>
-                    Teleport Target Id: <input type="number" step="1" id="numberInput" ng-model='inter.targetId'>
                     Pos - X: <input type="number" step="1" id="numberInput" ng-model='inter.toPos.x'>
                     Y: <input type="number" step="1" id="numberInput" ng-model='inter.toPos.y'><br />
                 </span>
