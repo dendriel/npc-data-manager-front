@@ -4,7 +4,7 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
     let self = this;
     self.file_name = $routeParams.file_name;
     self.entity = $routeParams.entity;
-    self.filePath = "E:\\workspace\\Java\\the-quest\\src\\com\\thequest\\resources\\data\\" + self.file_name + ".json";
+    self.filePath = "E:\\workspace\\Java\\the-quest\\src\\resources\\assets\\data\\" + self.file_name + ".json";
 
     if ($routeParams.action === "import") {
         self.actionName = "Import";
