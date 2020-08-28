@@ -1,10 +1,16 @@
-var express = require('express');
-var app = express();
+'use strict';
 
+const express = require('express');
+
+// Constants
+const host = '0.0.0.0';
+const port = 9090;
+
+const app = express();
 app.use(express.static('app'));
-app.get('/', function (req, res, next){
+app.get('/', function (req, res){
     res.redirect('/');
 });
 
-app.listen(9090, 'localhost');
-console.log("App is running at localhost:9090");
+app.listen(port, host);
+console.log(`App is running at ${host}:${port}`);
