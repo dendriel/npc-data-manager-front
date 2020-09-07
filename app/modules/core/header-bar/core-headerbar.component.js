@@ -1,7 +1,8 @@
 'use strict';
 
-function HeaderBarController($location, $route, sharedData) {
+function HeaderBarController($location, $route, sharedData, CoreAuthenticationService) {
     let self = this;
+    let loginRoute = "/login";
 
     self.changeRoute = function(newRoute) {
         $location.path(newRoute);
@@ -12,6 +13,14 @@ function HeaderBarController($location, $route, sharedData) {
             $location.path(newRoute);
         }
     };
+
+    self.logout = function () {
+        if (!CoreAuthenticationService.isAuthenticated()) {
+            return
+        }
+        CoreAuthenticationService.logout();
+        $location.path(loginRoute);
+    }
 }
 
 
@@ -19,5 +28,5 @@ angular
     .module('core')
     .component('headerBar', {
         templateUrl: 'modules/core/header-bar/core-headerbar.template.html',
-        controller: ['$location', '$route', 'CoreSharedDataService', HeaderBarController]
+        controller: ['$location', '$route', 'CoreSharedDataService', 'CoreAuthenticationService', HeaderBarController]
     });

@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('npcDataManager', [
+angular
+    .module('npcDataManager', [
     'ngRoute',
     'npchandler',
     'enemyhandler',

@@ -1,6 +1,7 @@
 'use strict';
 
-function NpcHandlerListController($location, NpcHandlerService, sharedData, FeedbackBarService) {
+function NpcHandlerListController($location, CoreGenericService, sharedData, FeedbackBarService) {
+    const entity = "npc";
     let self = this;
     sharedData.setParam("npc", null);
 
@@ -17,8 +18,8 @@ function NpcHandlerListController($location, NpcHandlerService, sharedData, Feed
 
         const index = self.npcs.indexOf(npc);
         if (index > -1) {
-            NpcHandlerService
-                .delete(npc.idAsText)
+            CoreGenericService
+                .delete(entity, npc.idAsText)
                 .then((res) => {
                     self.npcs.splice(index, 1);
                     FeedbackBarService.info("NPC " + npc.name + " removed!");
@@ -36,8 +37,8 @@ function NpcHandlerListController($location, NpcHandlerService, sharedData, Feed
         $location.path(newRoute);
     };
 
-    NpcHandlerService
-        .getAll()
+    CoreGenericService
+        .getAll(entity)
         .then((res) => {
             self.npcs = res.data;
             sharedData.setParam("npcs", res.data);
@@ -50,5 +51,5 @@ angular
     .module('npchandler')
     .component('npcList', {
        templateUrl: 'modules/npc-handler/list/npchandler-list.template.html',
-        controller: ['$location', 'NpcHandlerService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerListController]
+        controller: ['$location', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerListController]
     });

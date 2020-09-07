@@ -6,6 +6,9 @@ angular
 
             $routeProvider
                 // Core
+                .when('/login', {
+                    template: '<login></login>'
+                })
                 .when('/dashboard', {
                     template: '<dashboard></dashboard>'
                 })

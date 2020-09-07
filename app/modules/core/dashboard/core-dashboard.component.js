@@ -1,8 +1,7 @@
 'use strict';
 
-function DashboardController($location, CoreGenericService, sharedData) {
+function DashboardController($location, CoreGenericService) {
     let self = this;
-    sharedData.clear();
 
     self.npc = {
         count: 0,
@@ -75,6 +74,6 @@ function DashboardController($location, CoreGenericService, sharedData) {
 angular
     .module('core')
     .component('dashboard', {
-    templateUrl: "modules/core/dashboard/core-dashboard.template.html",
-    controller: ['$location', 'CoreGenericService', 'CoreSharedDataService', DashboardController]
-});
+        templateUrl: "modules/core/dashboard/core-dashboard.template.html",
+        controller: ['$location', 'CoreGenericService', DashboardController]
+    });
