@@ -1,11 +1,14 @@
 'use strict';
 
-function CoreGenericService($http, sharedData) {
+function CoreGenericService($http, $location, sharedData) {
     let self = this;
     const authTokenKey = "authToken";
 
+    const backendAddress = $location.$$protocol + "://" + $location.$$host + ":" + $location.$$port + "/rest/";
+    sharedData.setPersistentParam("backendAddress", backendAddress);
+
     self.getById = function(entity, id) {
-        let url = "http://localhost:8080/" + entity + "/getById?id="+id;
+        let url = backendAddress + entity + "/getById?id="+id;
         console.log(url);
         return $http({
             method: 'GET',
@@ -17,7 +20,7 @@ function CoreGenericService($http, sharedData) {
     };
 
     self.delete = function(entity, id) {
-        let url = "http://localhost:8080/" + entity + "/delete?id="+id;
+        let url = backendAddress + entity + "/delete?id="+id;
         console.log(url);
         return $http({
             method: 'GET',
@@ -29,7 +32,7 @@ function CoreGenericService($http, sharedData) {
     };
 
     self.getAll = function(entity) {
-        let url = "http://localhost:8080/" + entity + "/getAll";
+        let url = backendAddress + entity + "/getAll";
         console.log(url);
         return $http({
             method: 'GET',
@@ -41,7 +44,7 @@ function CoreGenericService($http, sharedData) {
     };
 
     self.save = function(entity, npcData) {
-        let url = "http://localhost:8080/" + entity + "/save";
+        let url = backendAddress + entity + "/save";
         console.log(url + " - " + npcData);
         return $http({
             method: 'POST',
@@ -56,7 +59,7 @@ function CoreGenericService($http, sharedData) {
     };
 
     self.import = function(entity, filePath) {
-        let url = "http://localhost:8080/" + entity + "/import";
+        let url = backendAddress + entity + "/import";
         let data = filePath;
         console.log(url + " - " + data);
         return $http({
@@ -72,7 +75,7 @@ function CoreGenericService($http, sharedData) {
     };
 
     self.export = function(entity, filePath) {
-        let url = "http://localhost:8080/" + entity + "/export";
+        let url = backendAddress + entity + "/export";
         let data = filePath;
         console.log(url + " - " + data);
         return $http({
@@ -88,7 +91,7 @@ function CoreGenericService($http, sharedData) {
     };
 
     self.login = function(authParams) {
-        let url = "http://localhost:8080/" + "authenticate";
+        let url = backendAddress + "authenticate";
         let data = authParams;
         console.log(url + " - " + data); // debugging purposes only.
         return $http({
@@ -106,4 +109,4 @@ function CoreGenericService($http, sharedData) {
 
 angular
     .module('core')
-    .service('CoreGenericService', ['$http', 'CoreSharedDataService', CoreGenericService]);
+    .service('CoreGenericService', ['$http', '$location', 'CoreSharedDataService', CoreGenericService]);
