@@ -4,7 +4,7 @@
             <legend style="font-size: 24px;">{{elem.name}} ({{elem.uid}})</legend>
             <div style="float:left; width:400px">
                 <button type="input" ng-click="$ctrl.edit(elem)" style="float:left;width:50px;height:70px; margin-right:10px; margin-bottom: 5px">Edit</button>
-                <img ng-src="images\{{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left;margin-right:5px" height="80" width="80">
+                <img ng-src="images?name={{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left;margin-right:5px" height="80" width="80">
                 UID: {{elem.uid}} <br />
                 Image: {{elem.spriteData.imageFile}}<br />
                 Behavior ID: {{elem.behaviorId}}

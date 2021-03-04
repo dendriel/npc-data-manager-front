@@ -11,7 +11,6 @@ const useS3 = process.env.S3_ENABLED === "true";
 const s3BucketName = process.env.S3_BUCKET_NAME;
 
 const app = express();
-app.use(express.static('app'));
 
 const apiProxy = httpProxy.createProxyServer();
 
@@ -60,19 +59,38 @@ app.use('/images/', function (req, res){
     //     console.log(objects);
     // });
 
+    const fileNameParts = s3Params.Key.split('.');
+    if (fileNameParts.length === 1) {
+        res.status(400);
+        res.type('txt').send(`Invalid key: ${s3Params.Key}`);
+        return;
+    }
+
     s3.getObject(s3Params, function(err, data) {
         if (err) {
+            if (err.name === "NoSuchKey") {
+                res.status(404);
+                res.type('txt').send('Not found');
+                console.log(`Key not found: ${s3Params.Key}`);
+                return;
+            }
+
+            res.status(500);
+            res.type('txt').send(`Could not retrieve key: ${s3Params.Key}`);
             console.log(err);
             return;
         }
 
         console.log(`Forwarding ${s3Params.Key} from storage.`);
+        res.status(200);
         res.setHeader('Content-type', data.ContentType);
         res.setHeader('Content-Length', data.ContentLength);
         res.setHeader('Last-Modified', data.LastModified);
         data.Body.pipe(res)
     });
 });
+
+app.use(express.static('app'));
 
 app.use('/', function (req, res){
     console.log("Request for frontend: " + req.url);
