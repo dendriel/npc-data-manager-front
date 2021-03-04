@@ -46,7 +46,7 @@ function DashboardController($location, CoreGenericService) {
             legend: "NPCs",
             bgcolor: "#E8F8FF",
             icon: {
-                image: "images\\merchant01.png",
+                image: "images?name=merchant01.png",
                 w: 80, h: 80
             },
         },
@@ -55,7 +55,7 @@ function DashboardController($location, CoreGenericService) {
             legend: "Items",
             bgcolor: "#fff3cd",
             icon: {
-                image: "images\\icon_iron_dagger.png",
+                image: "images?name=icon_iron_dagger.png",
                 w: 64, h: 64
             },
         },
@@ -64,7 +64,7 @@ function DashboardController($location, CoreGenericService) {
             legend: "Enemies",
             bgcolor: "#f8d7da",
             icon: {
-                image: "images\\bandit01.png",
+                image: "images?name=bandit01.png",
                 w: 80, h: 80
             },
         }
