@@ -1,6 +1,6 @@
 'use strict';
 
-function DashboardController($location, CoreGenericService) {
+function DashboardController($location, CoreGenericService, sharedData) {
     let self = this;
 
     self.npc = {
@@ -22,18 +22,21 @@ function DashboardController($location, CoreGenericService) {
         .getAll('npc')
         .then(res => {
             self.npc.count = res.data.length;
+            sharedData.setParam("npcs", res.data);
         });
 
     CoreGenericService
         .getAll('item')
         .then(res => {
             self.item.count = res.data.length;
+            sharedData.setParam("items", res.data);
         });
 
     CoreGenericService
         .getAll('enemy')
         .then(res => {
             self.enemy.count = res.data.length;
+            sharedData.setParam("enemies", res.data);
         });
 
     self.changeRoute = function(newRoute) {
@@ -75,5 +78,5 @@ angular
     .module('core')
     .component('dashboard', {
         templateUrl: "modules/core/dashboard/core-dashboard.template.html",
-        controller: ['$location', 'CoreGenericService', DashboardController]
+        controller: ['$location', 'CoreGenericService', 'CoreSharedDataService', DashboardController]
     });
