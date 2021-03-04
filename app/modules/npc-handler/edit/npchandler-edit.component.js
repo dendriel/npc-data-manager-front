@@ -1,6 +1,7 @@
 'use strict';
 
-function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, sharedData, FeedbackBarService) {
+function NpcHandlerEditController($scope, $routeParams, CoreGenericService, sharedData, FeedbackBarService) {
+    const entity = 'npc';
     let self = this;
     self.npcData = {};
 
@@ -157,8 +158,8 @@ function NpcHandlerEditController($scope, $routeParams, NpcHandlerService, share
             })
         });
 
-        NpcHandlerService
-            .save(self.npcData)
+        CoreGenericService
+            .save(entity, self.npcData)
             .then((res) => {
                 if (res.status === 200) {
                     FeedbackBarService.info("NPC saved successfully!");
@@ -191,5 +192,5 @@ angular
     .module('npchandler')
     .component('npcEdit', {
         templateUrl: 'modules/npc-handler/edit/npchandler-edit.template.html',
-        controller: ['$scope', '$routeParams', 'NpcHandlerService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerEditController]
+        controller: ['$scope', '$routeParams', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerEditController]
     });
