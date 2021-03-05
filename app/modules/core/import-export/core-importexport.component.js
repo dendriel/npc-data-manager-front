@@ -31,11 +31,34 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
     };
 
     self.import = () => {
-        CoreGenericService
-            .import(self.entity, self.filePath)
-            .then((res) => {
-                FeedbackBarService.info("Imported " + res.data + " " + self.entity + "s.");
-            });
+        let fileField = document.getElementById('file');
+        let f = fileField.files[0];
+        let r = new FileReader();
+
+        r.onloadend = function(e) {
+            let rawData = e.target.result;
+            let data = JSON.parse(rawData);
+
+            CoreGenericService
+                .import(self.entity, data)
+                .then((res) => {
+                    const retVal = res.data;
+
+                    if (retVal >= 0) {
+                        FeedbackBarService.info("Imported " + res.data + " " + self.entity + "s.");
+                    }
+                    else if (retVal == -1) {
+                        FeedbackBarService.error("Failed to import \"" + f.name + "\". Invalid data.");
+                    }
+                    else {
+                        FeedbackBarService.error("Failed to import \"" + f.name + "\". Could not save to database.");
+                    }
+                    fileField.value = null;
+                });
+        }
+
+        r.readAsBinaryString(f);
+        // TODO: add spinner.
     };
 
     self.export = () => {

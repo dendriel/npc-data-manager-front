@@ -25,6 +25,29 @@ function EnemyHandlerListController($location, CoreGenericService, sharedData, F
         self.changeRoute('/' + entity + '/edit');
     };
 
+    self.remove = (elem) => {
+        let remove = confirm("Do you really want to remove " + elem.name + "?");
+        if (remove === false) {
+            return;
+        }
+
+        const index = self.enemies.indexOf(elem);
+        if (index > -1) {
+            CoreGenericService
+                .delete(entity, elem.idAsText)
+                .then((res) => {
+                    self.enemies.splice(index, 1);
+                    FeedbackBarService.info(elem.name + " removed!");
+                })
+                .catch(reason =>
+                    FeedbackBarService.error("Failed to delete element! Status: " + reason.status + ". Error: " + reason.data.error + ":" + reason.message)
+                )
+        }
+        else {
+            FeedbackBarService.error("Couldn't remove element from array. Enemy is not in the list");
+        }
+    };
+
     self.changeRoute = function(newRoute) {
         $location.path(newRoute);
     };
