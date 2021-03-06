@@ -28,6 +28,10 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
     }
 
     self.execute = () => {
+        if (self.inprogress) {
+            return;
+        }
+
         let selectedFile = self.getSelectedFile();
 
         let continueAction = confirm("Do you really want to " + self.actionName + " " + selectedFile + "?");
