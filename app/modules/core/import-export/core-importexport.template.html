@@ -1,14 +1,15 @@
 <div>
-    <fieldset class="col-md-12" style="{{$ctrl.style}}">
+    <fieldset class="col-md-6" style="{{$ctrl.style}}">
         <legend>{{$ctrl.legend}}</legend>
-        <br />
+        <br/>
             <div class="col-md-12">
                 <input type="file" id="file" name="file" accept=".json"/>
             </div>
+
             <br/>
-            <div class="col-md-12">
-                <button ng-if="!$ctrl.inprogress" class="btn btn-primary" style="float:right;margin-top:10px; margin-bottom: 10px;"  ng-click="$ctrl.execute()">{{$ctrl.actionName}}</button>
-                <button ng-if="$ctrl.inprogress" class="btn btn-primary" style="float:right;margin-top:10px; margin-bottom: 10px;">
+            <div class="col-md-6">
+                <button ng-if="!$ctrl.inprogress" class="btn btn-primary" style="margin-bottom: 10px;"  ng-click="$ctrl.execute()">{{$ctrl.actionName}}</button>
+                <button ng-if="$ctrl.inprogress" class="btn btn-primary" style="margin-bottom: 10px;">
                     <span class="spinner-border spinner-border-sm"></span>
                     Running..
                 </button>

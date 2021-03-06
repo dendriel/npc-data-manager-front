@@ -8,7 +8,7 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
 
     if ($routeParams.action === "import") {
         self.actionName = "Import";
-        self.style = "background-color:#E8F8FF; width: min-content;";
+        self.style = "background-color:#E8F8FF;";
         self.legend = "Import " + self.entity.toUpperCase();
     }
     else {
@@ -17,8 +17,19 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
         self.legend = "Export " + self.entity.toUpperCase();
     }
 
+    self.getSelectedFile = () => {
+        let fileField = document.getElementById('file');
+        return fileField.files[0];
+    }
+
     self.execute = () => {
-        let continueAction = confirm("Do you really want to " + self.actionName + " " + self.filePath + "?");
+        let selectedFile = self.getSelectedFile();
+        if (!selectedFile) {
+            FeedbackBarService.error("No file selected to import!");
+            return;
+        }
+
+        let continueAction = confirm("Do you really want to " + self.actionName + " " + selectedFile.name + "?");
         if (continueAction === false) {
             return;
         }
@@ -53,7 +64,7 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
                         FeedbackBarService.info("Imported " + res.data + " " + self.entity + "s.");
                         fileField.value = null;
                     }
-                    else if (retVal == -1) {
+                    else if (retVal === -1) {
                         FeedbackBarService.error("Failed to import \"" + f.name + "\". Invalid data.");
                     }
                     else {
