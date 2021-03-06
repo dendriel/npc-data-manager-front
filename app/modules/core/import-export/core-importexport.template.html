@@ -7,7 +7,11 @@
             </div>
             <br/>
             <div class="col-md-12">
-                <button style="float:right;margin-top:10px; margin-bottom: 10px;"  ng-click="$ctrl.execute()">{{$ctrl.actionName}}</button>
+                <button ng-if="!$ctrl.inprogress" class="btn btn-primary" style="float:right;margin-top:10px; margin-bottom: 10px;"  ng-click="$ctrl.execute()">{{$ctrl.actionName}}</button>
+                <button ng-if="$ctrl.inprogress" class="btn btn-primary" style="float:right;margin-top:10px; margin-bottom: 10px;">
+                    <span class="spinner-border spinner-border-sm"></span>
+                    Running..
+                </button>
             </div>
     </fieldset>
 

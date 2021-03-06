@@ -4,7 +4,7 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
     let self = this;
     self.file_name = $routeParams.file_name;
     self.entity = $routeParams.entity;
-    self.filePath = "E:\\workspace\\Java\\quest\\src\\main\\resources\\data\\data\\" + self.file_name + ".json";
+    self.inprogress = false;
 
     if ($routeParams.action === "import") {
         self.actionName = "Import";
@@ -35,6 +35,11 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
         let f = fileField.files[0];
         let r = new FileReader();
 
+        if (!f) {
+            FeedbackBarService.error("No file selected to import!");
+            return;
+        }
+
         r.onloadend = function(e) {
             let rawData = e.target.result;
             let data = JSON.parse(rawData);
@@ -46,6 +51,7 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
 
                     if (retVal >= 0) {
                         FeedbackBarService.info("Imported " + res.data + " " + self.entity + "s.");
+                        fileField.value = null;
                     }
                     else if (retVal == -1) {
                         FeedbackBarService.error("Failed to import \"" + f.name + "\". Invalid data.");
@@ -53,12 +59,12 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
                     else {
                         FeedbackBarService.error("Failed to import \"" + f.name + "\". Could not save to database.");
                     }
-                    fileField.value = null;
+                    self.inprogress = false;
                 });
         }
 
         r.readAsBinaryString(f);
-        // TODO: add spinner.
+        self.inprogress = true;
     };
 
     self.export = () => {
