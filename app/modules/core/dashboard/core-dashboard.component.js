@@ -5,17 +5,17 @@ function DashboardController($location, CoreGenericService, sharedData) {
 
     self.npc = {
         count: 0,
-        list: () => { self.changeRoute("/npc/list") }
+        list: () => { self.changeRoute("/list/npc") }
     };
 
     self.item = {
         count: 0,
-        list: () => { self.changeRoute("/item/list") }
+        list: () => { self.changeRoute("/list/item") }
     };
 
     self.enemy = {
         count: 0,
-        list: () => { self.changeRoute("/enemy/list") }
+        list: () => { self.changeRoute("/list/enemy") }
     };
 
     CoreGenericService

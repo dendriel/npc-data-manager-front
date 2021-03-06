@@ -1,16 +1,18 @@
 'use strict';
 
-function EnemyHandlerListController($location, CoreGenericService, sharedData, FeedbackBarService) {
+function EntityHandlerListController($location, $routeParams, CoreGenericService, sharedData, FeedbackBarService) {
     let self = this;
-    const entity = "enemy";
-    const entities = "enemies";
+    self.entitiesLabel = "entities";
+
+    const entity = $routeParams.entity;
+
     sharedData.setParam(entity, null);
 
     CoreGenericService
         .getAll(entity)
         .then((res) => {
-            self.enemies = res.data;
-            sharedData.setParam(entities, res.data);
+            self.entities = res.data;
+            // sharedData.setParam(entitiesLabel, res.data);
         });
 
     self.edit = (elem) => {
@@ -32,7 +34,7 @@ function EnemyHandlerListController($location, CoreGenericService, sharedData, F
             return;
         }
 
-        const index = self.enemies.indexOf(elem);
+        const index = self.entities.indexOf(elem);
         if (index <= -1) {
             FeedbackBarService.error("Couldn't remove element from array. Enemy is not in the list");
             return;
@@ -41,7 +43,7 @@ function EnemyHandlerListController($location, CoreGenericService, sharedData, F
         CoreGenericService
             .delete(entity, elem.idAsText)
             .then((res) => {
-                self.enemies.splice(index, 1);
+                self.entities.splice(index, 1);
                 FeedbackBarService.info(elem.name + " removed!");
             })
             .catch(reason =>
@@ -50,23 +52,23 @@ function EnemyHandlerListController($location, CoreGenericService, sharedData, F
     };
 
 
-    self.removeAll = (elem) => {
-        let remove = confirm("Do you really want to remove ALL " + entities + "?");
+    self.removeAll = () => {
+        let remove = confirm("Do you really want to remove ALL " + self.entitiesLabel + "?");
         if (remove === false) {
             return;
         }
 
-        const idsToRemove = self.enemies.map(e => e.idAsText);
+        const idsToRemove = self.entities.map(e => e.idAsText);
         if (idsToRemove.length === 0) {
-            FeedbackBarService.info("There is no " + entities + " to remove.");
+            FeedbackBarService.info("There is no " + self.entitiesLabel + " to remove.");
             return;
         }
 
         CoreGenericService
             .deleteAll(entity, idsToRemove)
             .then((res) => {
-                FeedbackBarService.info(res.data + " " + entities + " removed!");
-                self.enemies = [];
+                FeedbackBarService.info(res.data + " " + self.entitiesLabel + " removed!");
+                self.entities = [];
             })
             .catch(reason =>
                 FeedbackBarService.error("Failed to delete element! Status: " + reason.status + ". Error: " + reason.data.error + ":" + reason.message)
@@ -81,8 +83,8 @@ function EnemyHandlerListController($location, CoreGenericService, sharedData, F
 }
 
 angular
-    .module('enemyhandler')
-    .component('enemyList', {
-        templateUrl: 'modules/enemy-handler/list/enemyhandler-list.template.html',
-        controller: ['$location', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", EnemyHandlerListController]
-});
+    .module('core')
+    .component('entityList', {
+        templateUrl: 'modules/core/entity-list/entity-list.template.html',
+        controller: ['$location', '$routeParams', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", EntityHandlerListController]
+    });

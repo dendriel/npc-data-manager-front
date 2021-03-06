@@ -16,7 +16,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="npc-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NPC</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#!npc/list">List</a>
+                    <a class="dropdown-item" href="#!list/npc">List</a>
                     <button type="input"  class="dropdown-item" ng-click='$ctrl.changeRoute("/npc/edit")'>Create</button>
                     <a class="dropdown-item" href="#!core/importExport/import/npc/npcs_data">Import</a>
                     <a class="dropdown-item" href="#!core/importExport/export/npc/npcs_data">Export</a>
@@ -26,7 +26,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="item-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Item</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#!item/list">List</a>
+                    <a class="dropdown-item" href="#!/list/item">List</a>
                     <button type="input" class="dropdown-item" ng-click='$ctrl.changeRoute("/item/edit")'>Create</button>
                     <a class="dropdown-item" href="#!core/importExport/import/item/items_data">Import</a>
                     <a class="dropdown-item" href="#!core/importExport/export/item/items_data">Export</a>
@@ -36,7 +36,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="item-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enemy</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#!enemy/list">List</a>
+                    <a class="dropdown-item" href="#!list/enemy">List</a>
                     <button type="input" class="dropdown-item" ng-click='$ctrl.changeRoute("/enemy/edit")'>Create</button>
                     <a class="dropdown-item" href="#!core/importExport/import/enemy/enemies_data">Import</a>
                     <a class="dropdown-item" href="#!core/importExport/export/enemy/enemies_data">Export</a>
@@ -46,9 +46,9 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn my-2 my-sm-0" type="submit" ng-click='$ctrl.logout()'>Logout</button>
-            </li>
+            <div class="nav-item" style="float:right">
+                <button class="btn my-2 my-sm-0 btn-outline-danger" type="submit" ng-click='$ctrl.logout()'>Logout</button>
+            </div>
 
         </ul>
 <!--        <form class="form-inline my-2 my-lg-0">-->

@@ -1,13 +1,13 @@
-<div ng-if="$ctrl.enemies == null || $ctrl.enemies.length == 0" class="col-md-12" style="padding-bottom: 100px;">
+<div ng-if="$ctrl.entities == null || $ctrl.entities.length == 0" class="col-md-12" style="padding-bottom: 100px;">
     <div class="col-md-8" style="background-color: #e0e0eb; padding-top: 10px">
         <div class="col-md-8">
-            <label class="col-md-12">No enemies found.</label>
+            <label class="col-md-12">No {{$ctrl.entitiesLabel}} found.</label>
         </div>
     </div>
 </div>
 
-<div ng-if="$ctrl.enemies != null && $ctrl.enemies.length > 0" class="col-md-12" style="padding-bottom: 100px;">
-    <div class="col-md-8" ng-repeat="elem in $ctrl.enemies" style="padding-bottom: 10px; padding-top: 10px">
+<div ng-if="$ctrl.entities != null && $ctrl.entities.length > 0" class="col-md-12" style="padding-bottom: 100px;">
+    <div class="col-md-8" ng-repeat="elem in $ctrl.entities" style="padding-bottom: 10px; padding-top: 10px">
         <fieldset class="col-md-12" style="background-color: #e0e0eb">
             <legend style="font-size: 24px;">{{elem.name}} ({{elem.uid}})</legend>
             <div class="col-md-9" style="float:left; margin-bottom: 10px">
@@ -15,7 +15,6 @@
                 <img ng-src="images?name={{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left;margin-right:5px" height="80" width="80">
                 UID: {{elem.uid}} <br />
                 Image: {{elem.spriteData.imageFile}}<br />
-                Behavior ID: {{elem.behaviorId}}
             </div>
             <div class="col-md-3" style="float:right">
                 <button class="col-md-4" type="input" ng-click="$ctrl.remove(elem)" style="float:right;height:70px">Remove</button>
