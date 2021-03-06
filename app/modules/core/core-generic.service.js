@@ -31,6 +31,21 @@ function CoreGenericService($http, $location, sharedData) {
         });
     };
 
+    self.deleteAll = function(entity, ids) {
+        let url = backendAddress + entity + "/deleteAll";
+        console.log(url);
+        return $http({
+            method: 'POST',
+            dataType: 'json',
+            url: url,
+            headers: {
+                'Content-Type': "application/json;charset=utf-8",
+                'Authorization': "Bearer " + sharedData.getParam(authTokenKey)
+            },
+            data: ids
+        });
+    };
+
     self.getAll = function(entity) {
         let url = backendAddress + entity + "/getAll";
         console.log(url);
