@@ -2,7 +2,7 @@
 
 function CoreExportController($routeParams, CoreGenericService, FeedbackBarService) {
     let self = this;
-    self.file_name = $routeParams.file_name;
+    self.fileName = $routeParams.file_name + ".json";
     self.entity = $routeParams.entity;
     self.inprogress = false;
 
@@ -13,26 +13,28 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
     }
     else {
         self.actionName = "Export";
-        self.style = "background-color:#f8d7da; width: min-content;";
+        self.style = "background-color:#f8d7da;";
         self.legend = "Export " + self.entity.toUpperCase();
     }
 
     self.getSelectedFile = () => {
-        let fileField = document.getElementById('file');
-        return fileField.files[0];
+        if (self.actionName === "Import") {
+            let fileField = document.getElementById('file');
+            return fileField ? fileField.files[0].name : "undefined";
+        }
+        else {
+            return self.fileName;
+        }
     }
 
     self.execute = () => {
         let selectedFile = self.getSelectedFile();
-        if (!selectedFile) {
-            FeedbackBarService.error("No file selected to import!");
-            return;
-        }
 
-        let continueAction = confirm("Do you really want to " + self.actionName + " " + selectedFile.name + "?");
+        let continueAction = confirm("Do you really want to " + self.actionName + " " + selectedFile + "?");
         if (continueAction === false) {
             return;
         }
+
         if ($routeParams.action === "import") {
             self.import();
         }
@@ -79,10 +81,31 @@ function CoreExportController($routeParams, CoreGenericService, FeedbackBarServi
     };
 
     self.export = () => {
+        if (!self.fileName) {
+            FeedbackBarService.error("No file name to export!");
+            return;
+        }
+
+        self.inprogress = true;
         CoreGenericService
-            .export(self.entity, self.filePath)
+            .export(self.entity, self.fileName)
             .then((res) => {
-                FeedbackBarService.info("Exported " + res.data + " " + self.entity + "s.");
+                let json = JSON.stringify(res.data);
+
+                json = [json];
+                let blob1 = new Blob(json, { type: "text/plain;charset=utf-8" });
+
+                let url = window.URL || window.webkitURL;
+                let link = url.createObjectURL(blob1);
+                let a = document.createElement("a");
+                a.download = self.fileName;
+                a.href = link;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                self.inprogress = false;
+                FeedbackBarService.info("Exported " + res.data.data.length + " " + self.entity + "s.");
             });
     };
 }

@@ -1,19 +1,24 @@
-<div>
+<div  class="col-md-12">
     <fieldset class="col-md-6" style="{{$ctrl.style}}">
         <legend>{{$ctrl.legend}}</legend>
         <br/>
-            <div class="col-md-12">
-                <input type="file" id="file" name="file" accept=".json"/>
-            </div>
+        <div ng-if="$ctrl.actionName=='Import'" class="col-md-12">
+            <input type="file" id="file" name="file" accept=".json"/>
+        </div>
 
-            <br/>
-            <div class="col-md-6">
-                <button ng-if="!$ctrl.inprogress" class="btn btn-primary" style="margin-bottom: 10px;"  ng-click="$ctrl.execute()">{{$ctrl.actionName}}</button>
-                <button ng-if="$ctrl.inprogress" class="btn btn-primary" style="margin-bottom: 10px;">
-                    <span class="spinner-border spinner-border-sm"></span>
-                    Running..
-                </button>
-            </div>
+        <div ng-if="$ctrl.actionName=='Export'" class="col-md-12">
+            <label class="col-md-3 text-right">Target File</label>
+            <input class="col-md-6" type="text" ng-model="$ctrl.fileName"/>
+        </div>
+
+        <br/>
+        <div class="col-md-6">
+            <button ng-if="!$ctrl.inprogress" class="btn btn-primary" style="margin-bottom: 10px;"  ng-click="$ctrl.execute()">{{$ctrl.actionName}}</button>
+            <button ng-if="$ctrl.inprogress" class="btn btn-primary" style="margin-bottom: 10px;">
+                <span class="spinner-border spinner-border-sm"></span>
+                Running..
+            </button>
+        </div>
     </fieldset>
 
 
