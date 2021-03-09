@@ -32,8 +32,7 @@
                 <td class="text-center align-middle">{{dir.resourcesCount}}</td>
                 <td class="text-center align-middle">
                     <button class="btn btn-outline-danger" ng-if="dir.name !== 'default' && dir.resourcesCount===0 && !dir.inprogress" type="button" ng-click="$ctrl.remove(dir)">Remove</button>
-                    <button class="btn btn-outline-danger" ng-if="dir.name === 'default' && !dir.inprogress" type="button" disabled>Remove</button>
-
+                    <button class="btn btn-outline-danger" ng-if="(dir.name === 'default' ||  dir.resourcesCount > 0)  && !dir.inprogress" type="button" disabled>Remove</button>
                     <button ng-if="dir.inprogress" class="btn btn-outline-danger" disabled>
                         <span class="spinner-border spinner-border-sm"></span>
                         Removing..

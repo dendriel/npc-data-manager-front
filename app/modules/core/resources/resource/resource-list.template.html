@@ -1,0 +1,80 @@
+<div class="col-md-12 container">
+
+    <div>
+        <h1>Resources</h1>
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="dirSelect">Working Directory:</label>
+            <select class="form-control" id="dirSelect"
+                    ng-init="$ctrl.selectedDir = $ctrl.directories[0]"
+                    ng-options="dir.name for dir in $ctrl.directories track by dir.id"
+                    ng-model="$ctrl.selectedDir"
+                    ng-change="$ctrl.refresh()"
+            >
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <div class="text-left">
+                <label>New Resource:</label>
+            </div>
+            <div class="form-group row flex-v-center">
+                <div class="control-group">
+                    <label class="control-label" for="resName">Name:</label>
+                    <div class="controls">
+                        <input type="text" id="resName" class="form-control" ng-model="$ctrl.newResource.name" placeholder="New Resource">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="resType">Type:</label>
+                    <select class="form-control" id="resType"
+                            ng-init="$ctrl.newResource.type"
+                            ng-options="res for res in $ctrl.resourceTypes"
+                            ng-model="$ctrl.newResource.type"
+                    >
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="resFile">File:</label>
+
+                    <div class="controls">
+                        <input type="file" id="resFile" name="file"/>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button ng-if="!$ctrl.inprogress" class="btn btn-primary" ng-click="$ctrl.create()">Create</button>
+                <button ng-if="$ctrl.inprogress" class="btn btn-primary" disabled>
+                    <span class="spinner-border spinner-border-sm"></span>
+                    Creating..
+                </button>
+            </div>
+        </div>
+
+        <hr />
+
+        <table class="table table-striped table-bordered table-hover table-sm">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            <tr ng-repeat="res in $ctrl.resources">
+                <td class="text-center align-middle">{{res.id}}</td>
+                <td class="text-center align-middle">{{res.name}}</td>
+                <td class="text-center align-middle">{{res.typeName}}</td>
+                <td class="text-center align-middle">
+                    <button class="btn btn-outline-danger" ng-if="!res.inprogress" type="button" ng-click="$ctrl.remove(res)">Remove</button>
+                    <button ng-if="res.inprogress" class="btn btn-outline-danger" disabled>
+                        <span class="spinner-border spinner-border-sm"></span>
+                        Removing..
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

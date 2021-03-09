@@ -1,6 +1,6 @@
 'use strict';
 
-function DirectoryListController($location, $routeParams, CoreStorageService, sharedData, FeedbackBarService) {
+function DirectoryListController(CoreStorageService, FeedbackBarService) {
     let self = this;
     self.directories = [];
     self.newDirName = "";
@@ -78,5 +78,5 @@ angular
     .module('core')
     .component('directoryList', {
         templateUrl: 'modules/core/resources/directory/directory-list.template.html',
-        controller: ['$location', '$routeParams', 'CoreStorageService', 'CoreSharedDataService', "FeedbackBarService", DirectoryListController]
+        controller: ['CoreStorageService', "FeedbackBarService", DirectoryListController]
     });
