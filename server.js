@@ -18,6 +18,14 @@ app.use('/rest/', function(req, res) {
     apiProxy.web(req, res, { target: backendUrl, changeOrigin: true, autoRewrite: true });
 });
 
+apiProxy.on('error', function (err, req, res) {
+    res.writeHead(503, {
+        'Content-Type': 'text/plain'
+    });
+
+    res.end(`${err}`);
+});
+
 const storageUrl = process.env.STORAGE_URL || "http://localhost:8081/storage/";
 app.use('/storage/', function (req, res) {
     console.log("Request for storage: " + req.url);

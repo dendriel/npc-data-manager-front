@@ -15,6 +15,9 @@ angular
                 .when('/core/importExport/:action/:entity/:file_name', {
                     template: '<import-export></import-export>'
                 })
+                .when('/resources/directories', {
+                    template: '<directory-list></directory-list>'
+                })
                 .when('/list/:entity', {
                     template: '<entity-list></entity-list>'
                 })

@@ -42,9 +42,16 @@
                     <a class="dropdown-item" href="#!core/importExport/export/enemy/enemies_data">Export</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+
+            <!-- Resources -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="item-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#!resources/directories">Directories</a>
+                    <a class="dropdown-item" href="#!resources/resources">Resources</a>
+                </div>
             </li>
+
 
             <div class="nav-item" style="float:right">
                 <button class="btn my-2 my-sm-0 btn-outline-danger" type="submit" ng-click='$ctrl.logout()'>Logout</button>

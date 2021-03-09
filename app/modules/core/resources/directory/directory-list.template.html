@@ -1,0 +1,45 @@
+<div class="col-md-12 container">
+
+    <div>
+        <h1>Directories</h1>
+    </div>
+
+    <dic class="container">
+        <div class="text-center">
+            <label>New directory:</label>
+            <input type="text" id="dirName" ng-model="$ctrl.newDirName">
+            <button ng-if="!$ctrl.inprogress" class="btn btn-primary" ng-click="$ctrl.create()">Create</button>
+            <button ng-if="$ctrl.inprogress" class="btn btn-primary" disabled>
+                <span class="spinner-border spinner-border-sm"></span>
+                Creating..
+            </button>
+        </div>
+
+    </dic>
+
+    <!-- LIST -->
+    <div class="container">
+        <table class="table table-striped table-bordered table-hover table-sm">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Resources</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            <tr ng-repeat="dir in $ctrl.directories">
+                <td class="text-center align-middle">{{dir.id}}</td>
+                <td class="text-center align-middle">{{dir.name}}</td>
+                <td class="text-center align-middle">{{dir.resourcesCount}}</td>
+                <td class="text-center align-middle">
+                    <button class="btn btn-outline-danger" ng-if="dir.name !== 'default' && dir.resourcesCount===0 && !dir.inprogress" type="button" ng-click="$ctrl.remove(dir)">Remove</button>
+                    <button class="btn btn-outline-danger" ng-if="dir.name === 'default' && !dir.inprogress" type="button" disabled>Remove</button>
+
+                    <button ng-if="dir.inprogress" class="btn btn-outline-danger" disabled>
+                        <span class="spinner-border spinner-border-sm"></span>
+                        Removing..
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
