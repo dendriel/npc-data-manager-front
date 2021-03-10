@@ -88,7 +88,7 @@ function ResourceListController(CoreStorageService, FeedbackBarService) {
             .catch(reason => {
                 self.inprogress = false;
                 FeedbackBarService.error("Failed to create resource! Status: " + reason.status + ". Error: " +
-                    reason.data + " : " + reason.message);
+                    JSON.stringify(reason.data) + " : " + reason.message);
                 }
             )
     }
