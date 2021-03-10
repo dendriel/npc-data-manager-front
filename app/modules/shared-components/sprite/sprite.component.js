@@ -1,6 +1,10 @@
 'use strict';
 
 function SpriteController() {
+    // let self = this;
+    // self.$onInit = function() {
+    //     console.log("SpriteController: " + JSON.stringify(self.data));
+    // };
 }
 
 angular

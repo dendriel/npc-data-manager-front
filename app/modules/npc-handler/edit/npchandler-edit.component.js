@@ -1,6 +1,6 @@
 'use strict';
 
-function NpcHandlerEditController($scope, $routeParams, CoreGenericService, sharedData, FeedbackBarService) {
+function NpcHandlerEditController($scope, $location, CoreGenericService, sharedData, FeedbackBarService) {
     const entity = 'npc';
     let self = this;
     self.npcData = {};
@@ -32,7 +32,7 @@ function NpcHandlerEditController($scope, $routeParams, CoreGenericService, shar
             uid: self.findNextNpcUid(),
             behaviorId: 2,
             status: { strength: 0, intelligence: 0, dexterity: 0, accuracy: 0, life: 0, mana: 0 },
-            spriteData: { imageFile: "FIX ME", order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
+            spriteData: { resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" }, order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
             interactionOrder: [],
             interactionData: [],
             facingRight: false,
@@ -163,8 +163,10 @@ function NpcHandlerEditController($scope, $routeParams, CoreGenericService, shar
             .then((res) => {
                 if (res.status === 200) {
                     FeedbackBarService.info("NPC saved successfully!");
-                    self.npcData = res.data;
-                    self.npcData.interactionData.forEach(i => self.setupStoreItems(i.storeItems));
+                    sharedData.clearParam("npc");
+                    $location.path('/list/npc');
+                    // self.npcData = res.data;
+                    // self.npcData.interactionData.forEach(i => self.setupStoreItems(i.storeItems));
                 } else {
                     FeedbackBarService.error("Failed to save NPC! Status: " + res.status);
                 }
@@ -192,5 +194,5 @@ angular
     .module('npchandler')
     .component('npcEdit', {
         templateUrl: 'modules/npc-handler/edit/npchandler-edit.template.html',
-        controller: ['$scope', '$routeParams', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerEditController]
+        controller: ['$scope', '$location', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", NpcHandlerEditController]
     });

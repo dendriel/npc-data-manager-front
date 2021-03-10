@@ -1,11 +1,25 @@
-<table>
-    <tr>
-        <td><b>Image</b></td>
-        <td rowspan="2">
-            <img ng-src="images\{{$ctrl.data}}" alt="icon" style="float:right;margin-right:5px" height="80" width="80">
-        </td>
-    </tr>
-    <tr>
-        <td>File: <input type="text" name="iconData_imageFile" ng-model='$ctrl.data'></td>
-    </tr>
-</table>
+<div class="container">
+    <div class="form-group">
+        <label for="dirSelect">Directory:</label>
+        <select class="form-control" id="dirSelect"
+                ng-init="$ctrl.selectedDir = $ctrl.directories[0]"
+                ng-options="dir.name for dir in $ctrl.directories track by dir.id"
+                ng-model="$ctrl.selectedDir"
+                ng-change="$ctrl.refresh()"
+        >
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="resSelect">Resource:</label>
+        <select class="form-control" id="resSelect"
+                ng-init="$ctrl.selectedRes = $ctrl.resources[0]"
+                ng-options="res.name for res in $ctrl.resources track by res.id"
+                ng-model="$ctrl.selectedRes"
+                ng-change="$ctrl.selectResource()"
+        >
+        </select>
+    </div>
+    <div class="form-group">
+        <img ng-src="storage\resource?storageId={{$ctrl.selectedRes.storageId}}" alt="icon" style="float:right;margin-right:5px" height="80" width="80">
+    </div>
+</div>

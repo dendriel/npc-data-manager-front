@@ -1,6 +1,6 @@
 'use strict';
 
-function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sharedData, FeedbackBarService) {
+function ItemHandlerEditController($scope, $location, CoreGenericService, sharedData, FeedbackBarService) {
     const entity = 'item';
     let self = this;
     self.data = {};
@@ -25,7 +25,8 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
             .then((res) => {
                 if (res.status === 200) {
                     FeedbackBarService.info("Entity saved successfully!");
-                    self.data = res.data;
+                    sharedData.clearParam("item");
+                    $location.path('/list/item');
                 } else {
                     FeedbackBarService.error("Failed to save entity! Status: " + res.status);
                 }
@@ -52,7 +53,7 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
     self.fixData = (data) => {
       if (data.aim === null || data.aim === undefined) {
           data.aim = { aimSprite: {
-                  imageFile: "FIX ME SPRITE",
+                  resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" },
                   order: 0,
                   offset: {x: 0, y: 0},
                   scale: {width: 1, height: 1},
@@ -85,13 +86,13 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
             name: "FIX ME",
             description: "FIX ME DESCRIPTION",
             spriteData: {
-                imageFile: "FIX ME SPRITE",
+                resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" },
                 order: 0,
                 offset: {x: 0, y: 0},
                 scale: {width: 1, height: 1},
                 enabled: true
             },
-            iconData: {imageFile: "FIX ME ICON", rect: {x: 0, y: 0, width: 64, height: 64}},
+            iconData: { resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" }, rect: {x: 0, y: 0, width: 64, height: 64}},
             count: 1,
             maximumStack: 20,
             price: 100,
@@ -100,7 +101,7 @@ function ItemHandlerEditController($scope, $routeParams, CoreGenericService, sha
             soundEfx: "",
             statusModifiersData: [],
             aim: { aimSprite: {
-                    imageFile: "FIX ME SPRITE",
+                        resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" },
                         order: 0,
                         offset: {x: 0, y: 0},
                     scale: {width: 1, height: 1},
@@ -132,5 +133,5 @@ angular
     .module('itemhandler')
     .component('itemEdit',{
         templateUrl: 'modules/item-handler/edit/itemhandler-edit.template.html',
-        controller: ['$scope', '$routeParams', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", ItemHandlerEditController]
+        controller: ['$scope', '$location', 'CoreGenericService', 'CoreSharedDataService', "FeedbackBarService", ItemHandlerEditController]
     });

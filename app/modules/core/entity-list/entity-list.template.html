@@ -12,9 +12,9 @@
             <legend style="font-size: 24px;">{{elem.name}} ({{elem.uid}})</legend>
             <div class="col-md-9" style="float:left; margin-bottom: 10px">
                 <button type="input" ng-click="$ctrl.edit(elem)" style="float:left;width:50px;height:70px; margin-right:10px">Edit</button>
-                <img ng-src="images?name={{elem.spriteData.imageFile}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left;margin-right:5px" height="80" width="80">
+                <img ng-src="storage\resource?storageId={{elem.spriteData.resource.storageId}}" ng-hide='!elem.spriteData.enabled' alt="elem_icon" style="float:left;margin-right:5px" height="80" width="80">
                 UID: {{elem.uid}} <br />
-                Image: {{elem.spriteData.imageFile}}<br />
+                Image: {{elem.spriteData.storageId}}<br />
             </div>
             <div class="col-md-3" style="float:right">
                 <button class="col-md-4" type="input" ng-click="$ctrl.remove(elem)" style="float:right;height:70px">Remove</button>

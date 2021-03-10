@@ -1,6 +1,6 @@
 'use strict';
 
-function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sharedData, FeedbackBarService) {
+function EnemyHandlerEditController($scope, $location, CoreGenericService, sharedData, FeedbackBarService) {
     const entity = "enemy";
     let self = this;
     self.enemyData = {};
@@ -40,7 +40,7 @@ function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sh
             uid: self.findNextEnemyUid(),
             behaviorId: 2,
             status: { strength: 0, intelligence: 0, dexterity: 0, accuracy: 0, life: 0, mana: 0 },
-            spriteData: { imageFile: "FIX ME", order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
+            spriteData: { resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" }, order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
             facingRight: false,
             idAsText: null,
             wearableHolder: { minAttack:0, maxAttack:0, defense:0 },
@@ -59,9 +59,10 @@ function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sh
             .save(entity, self.enemyData)
             .then((res) => {
                 if (res.status === 200) {
+                    // self.setupLootHolder(res.data.lootHolder);
+                    // self.enemyData = res.data;
                     FeedbackBarService.info("Entity saved successfully!");
-                    self.setupLootHolder(res.data.lootHolder);
-                    self.enemyData = res.data;
+                    $location.path('/list/enemy');
                 } else {
                     FeedbackBarService.error("Failed to save! Status: " + res.status);
                 }
@@ -70,11 +71,16 @@ function EnemyHandlerEditController($scope, $routeParams, CoreGenericService, sh
                 FeedbackBarService.error("Failed to save! Status: " + reason.status + ". Error: " + reason.data.error)
             );
     };
+
+    $scope.$on("$destroy", function() {
+        console.log("Clear enemy param.")
+        sharedData.clearParam("enemy");
+    });
 }
 
 angular
     .module('enemyhandler')
     .component('enemyEdit', {
        templateUrl: 'modules/enemy-handler/edit/enemyhandler-edit.template.html',
-       controller: ['$scope', '$routeParams', 'CoreGenericService', 'CoreSharedDataService', 'FeedbackBarService', EnemyHandlerEditController]
+       controller: ['$scope', '$location', 'CoreGenericService', 'CoreSharedDataService', 'FeedbackBarService', EnemyHandlerEditController]
     });

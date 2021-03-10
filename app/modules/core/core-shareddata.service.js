@@ -23,8 +23,12 @@ function CoreSharedDataService($window) {
 
     self.getParam = (key) => {
         //return self.data[key];
-        return  angular.fromJson($window.localStorage.getItem(key));
+        return angular.fromJson($window.localStorage.getItem(key));
     };
+
+    self.clearParam = (key) => {
+        $window.localStorage.setItem(key, null);
+    }
 
     self.clear = () => {
         // self.data = [];
