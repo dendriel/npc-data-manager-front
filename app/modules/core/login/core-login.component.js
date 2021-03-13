@@ -6,6 +6,8 @@ function CoreLogin($location, CoreAuthenticationService, FeedbackBarService) {
     self.data = "";
 
     self.submit = function() {
+        FeedbackBarService.hide();
+
         if (CoreAuthenticationService.isAuthenticated()) {
             $location.path(dashboardPath);
             return;
@@ -15,7 +17,7 @@ function CoreLogin($location, CoreAuthenticationService, FeedbackBarService) {
         //
         CoreAuthenticationService.login(self.data,
             () => {
-                FeedbackBarService.info("Logged!");
+                FeedbackBarService.info("Logged in!");
                 $location.path(dashboardPath);
             },
             () => {

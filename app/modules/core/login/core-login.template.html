@@ -1,22 +1,23 @@
-<div>
-    <fieldset>
-        <legend>Npc Data Manager</legend>
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" name="username" ng-model="$ctrl.data.username"><br /></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" name="password" ng-model="$ctrl.data.password"><br /></td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td style="float:right">
-                    <button  ng-click='$ctrl.submit()'>Log in</button>
-                </td>
-            </tr>
-        </table>
-    </fieldset>
+<div class="container col-md-12" style="display: flex; justify-content: center; align-items: center;">
+    <div class="form-group col-md-3" style="padding-top:5%">
+        <h1>Npc Data Manager</h1>
+
+        <div class="form-group col-md-9" style="padding-top:25px">
+            <div class="col-md-12">
+                <div class="row">
+                    <label for="usernameInput">Username:</label>
+                    <input type="text" class="form-control" id="usernameInput" name="username" ng-model="$ctrl.data.username"><br />
+                </div>
+                <div class="row">
+                    <label for="passwordInput">Password:</label>
+                    <input type="password" class="form-control" id="passwordInput" name="password" ng-model="$ctrl.data.password"><br />
+                </div>
+                <div class="row" style="padding-top:10px">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary" ng-click='$ctrl.submit()'>Log in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

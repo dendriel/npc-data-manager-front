@@ -1,12 +1,14 @@
-<div>
-    <span ng-repeat="elem in $ctrl.elements">
-        <fieldset style="background-color: {{elem.bgcolor}}; padding-bottom: 10px">
-            <legend style="font-size: 24px;">{{elem.legend}}</legend>
-            <div style="float:left; width:350px">
-                <button type="input" ng-click="elem.data.list()" style="float:left;width:70px;height:70px; margin-right:10px; margin-bottom: 5px">List</button>
-                <img ng-src="{{elem.icon.image}}" alt="item_icon" style="float:left" height="{{elem.icon.w}}" width="{{elem.icon.h}}">
-                Count: {{elem.data.count}} <br />
+<div class="container">
+    <fieldset class="row col-md-12 align-items-center" ng-repeat="elem in $ctrl.elements" style="background-color: {{elem.bgcolor}}; padding-bottom: 10px">
+        <legend class="col-md-12">{{elem.legend}}</legend>
+            <div class="col-md-1 text-left">
+                <button class="btn btn-primary col-md-12" ng-click="elem.data.list()">List</button>
             </div>
-        </fieldset>
-    </span>
+            <div class="col-md-1">
+                <img ng-src="{{elem.icon.image}}" alt="item_icon" height="{{elem.icon.w}}" width="{{elem.icon.h}}">
+            </div>
+            <div class="col-md-2">
+            <label >Count: {{elem.data.count}}</label>
+            </div>
+    </fieldset>
 </div>
