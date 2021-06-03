@@ -9,14 +9,25 @@ const port =  parseInt(process.env.FRONTEND_PORT) || 9090;
 
 const app = express();
 
+//**********************************
+// Useful for local testing.
+
 const apiProxy = httpProxy.createProxyServer();
 
-const backendUrl = process.env.BACKEND_URL || "http://localhost:8080/rest/";
+const authUrl = process.env.AUTH_URL || "http://localhost:8080/";
+app.use('/rest/authenticate', function(req, res) {
+    req.url = "/authenticate";
+    console.log("Request for authentication: " + req.url);
+    apiProxy.web(req, res, { target: authUrl, changeOrigin: true, autoRewrite: true });
+});
 
+const restUrl = process.env.BACKEND_URL || "http://localhost:8081/rest/";
 app.use('/rest/', function(req, res) {
     console.log("Request for backend: " + req.url);
-    apiProxy.web(req, res, { target: backendUrl, changeOrigin: true, autoRewrite: true });
+    apiProxy.web(req, res, { target: restUrl, changeOrigin: true, autoRewrite: true });
 });
+
+//**********************************
 
 apiProxy.on('error', function (err, req, res) {
     res.writeHead(503, {
@@ -26,9 +37,16 @@ apiProxy.on('error', function (err, req, res) {
     res.end(`${err}`);
 });
 
-const storageUrl = process.env.STORAGE_URL || "http://localhost:8081/storage/";
+const storageUrl = process.env.STORAGE_URL;
 app.use('/storage/', function (req, res) {
     console.log("Request for storage: " + req.url);
+
+    if (storageUrl == null) {
+        // To use this, setup a hard link to "images" directory containing testing images.
+        res.redirect('/' + req.query.storageId);
+        return;
+    }
+
     apiProxy.web(req, res, { target: storageUrl, changeOrigin: true, autoRewrite: true });
 });
 
