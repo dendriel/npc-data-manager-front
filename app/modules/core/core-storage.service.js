@@ -4,14 +4,14 @@ function CoreStorageService($http, $location, sharedData) {
     let self = this;
     const authTokenKey = "authToken";
 
-    const directoryPath = "directory/";
-    const resourcePath = "resource/";
+    const directoryPath = "directory";
+    const resourcePath = "resource";
 
     const storageAddress = $location.$$protocol + "://" + $location.$$host + ":" + $location.$$port + "/storage/";
     sharedData.setPersistentParam("storageAddress", storageAddress);
 
     self.getAllDirectories = function() {
-        let url = storageAddress + directoryPath + "all";
+        let url = storageAddress + directoryPath + "/" + "all";
         console.log(url);
         return $http({
             method: 'GET',
@@ -35,7 +35,7 @@ function CoreStorageService($http, $location, sharedData) {
     };
 
     self.removeDirectory = function(id) {
-        let url = storageAddress + directoryPath + id;
+        let url = storageAddress + directoryPath + "/" + id;
         console.log(url);
         return $http({
             method: 'DELETE',
@@ -47,7 +47,7 @@ function CoreStorageService($http, $location, sharedData) {
     }
 
     self.getResourcesByDirectoryId = function(id) {
-        let url = storageAddress + directoryPath + id + "/list";
+        let url = storageAddress + directoryPath + "/" + id + "/list";
         console.log(url);
         return $http({
             method: 'GET',
@@ -59,7 +59,7 @@ function CoreStorageService($http, $location, sharedData) {
     }
 
     self.getResourceTypes = function() {
-        let url = storageAddress + resourcePath + "types";
+        let url = storageAddress + resourcePath + "/" + "types";
         console.log(url);
         return $http({
             method: 'GET',
@@ -71,7 +71,7 @@ function CoreStorageService($http, $location, sharedData) {
     }
 
     self.createResource = function(name, type, directoryId, file) {
-        let url = storageAddress + resourcePath + "upload";
+        let url = storageAddress + resourcePath + "/" + "upload";
         console.log(url);
 
         let formData = new FormData();
@@ -92,7 +92,7 @@ function CoreStorageService($http, $location, sharedData) {
     }
 
     self.removeResource = function(id) {
-        let url = storageAddress + resourcePath + id;
+        let url = storageAddress + resourcePath + "/" + id;
         console.log(url);
         return $http({
             method: 'DELETE',

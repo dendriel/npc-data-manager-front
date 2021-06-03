@@ -49,7 +49,7 @@ function DashboardController($location, CoreGenericService, sharedData) {
             legend: "NPCs",
             bgcolor: "#E8F8FF",
             icon: {
-                image: "storage/resource?storageId=images/merchant01.png",
+                image: "assets/merchant01.png",
                 w: 80, h: 80
             },
         },
@@ -58,7 +58,7 @@ function DashboardController($location, CoreGenericService, sharedData) {
             legend: "Items",
             bgcolor: "#fff3cd",
             icon: {
-                image: "storage/resource?storageId=images/icon_iron_dagger.png",
+                image: "assets/icon_iron_dagger.png",
                 w: 64, h: 64
             },
         },
@@ -67,7 +67,7 @@ function DashboardController($location, CoreGenericService, sharedData) {
             legend: "Enemies",
             bgcolor: "#f8d7da",
             icon: {
-                image: "storage/resource?storageId=images/bandit01.png",
+                image: "assets/bandit01.png",
                 w: 80, h: 80
             },
         }
