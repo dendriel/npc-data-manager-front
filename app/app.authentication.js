@@ -10,11 +10,11 @@ function AppAuthentication($rootScope, $location, CoreAuthenticationService) {
     $rootScope.$on('$routeChangeStart', function (event) {
         let newRoute = $location.url();
 
-        if (isAuthenticationRequired(newRoute) && !CoreAuthenticationService.isAuthenticated()) {
-            console.log('DENY : Redirecting to Login');
-            event.preventDefault();
-            $location.path('/login');
-        }
+        // if (isAuthenticationRequired(newRoute) && !CoreAuthenticationService.isAuthenticated()) {
+        //     console.log('DENY : Redirecting to Login');
+        //     event.preventDefault();
+        //     $location.path('/login');
+        // }
     });
 }
 
