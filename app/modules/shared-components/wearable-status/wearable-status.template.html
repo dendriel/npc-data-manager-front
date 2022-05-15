@@ -1,34 +1,39 @@
 <fieldset style="background-color:#E8F8FF; float:left">
     <legend>Wearable Status</legend>
     <table>
-            <tr>
-                <td>
-                    <table>
-                        <tr>
-                            <td>Attack:</td>
-                            <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.minAttack'>-</td>
-                            <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.maxAttack'></td>
-                        </tr>
-                        <tr>
-                            <td>Defense:</td>
-                            <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.defense'></td>
-                        </tr>
-                        <tr>
-                            <td>Range:</td>
-                            <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.minRange'>-</td>
-                            <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.maxRange'></td>
-                        </tr>
-                        <tr>
-                            <td>Slots:</td>
-                            <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.inventorySlots'></td>
-                        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>Attack:</td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.minAttack'>-</td>
+                        <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.maxAttack'></td>
+                    </tr>
+                    <tr>
+                        <td>Defense:</td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.defense'></td>
+                    </tr>
+                    <tr>
+                        <td>Range:</td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.minRange'>-</td>
+                        <td><input type="number" id="numberInput" style="text-align:center"  ng-model='$ctrl.data.maxRange'></td>
+                    </tr>
+                    <tr>
+                        <td>Slots:</td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.inventorySlots'></td>
+                    </tr>
 
-                    </table>
-                </td>
-            </tr>
+                </table>
+            </td>
+        </tr>
         <tr>
             <td>
                 <status data='$ctrl.data'></status>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <status-modifier data='$ctrl.data'></status-modifier>
             </td>
         </tr>
     </table>
