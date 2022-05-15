@@ -6,7 +6,7 @@ function EnemyHandlerEditController($scope, $location, CoreGenericService, share
     self.enemyData = {};
 
     self.findNextEnemyUid = () => {
-        let enemies = sharedData.getParam("enemies");
+        let enemies = sharedData.getParam("enemy_all");
         let lastUid = 0;
         enemies.map(function(obj) {
             if (obj.uid > lastUid){

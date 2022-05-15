@@ -9,13 +9,13 @@ function ItemSelectController(sharedData, CoreGenericService) {
         }
     };
 
-    self.items = sharedData.getParam("items");
+    self.items = sharedData.getParam("item_all");
     if (self.items === null || self.items === undefined) {
         CoreGenericService
             .getAll("item")
             .then((res) => {
                 self.items = res.data;
-                sharedData.setParam("items", res.data);
+                sharedData.setParam("item_all", res.data);
             });
     }
 }

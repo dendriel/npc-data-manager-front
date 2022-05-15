@@ -22,21 +22,21 @@ function DashboardController($location, CoreGenericService, sharedData) {
         .getAll('npc')
         .then(res => {
             self.npc.count = res.data.length;
-            sharedData.setParam("npcs", res.data);
+            sharedData.setParam("npc_all", res.data);
         });
 
     CoreGenericService
         .getAll('item')
         .then(res => {
             self.item.count = res.data.length;
-            sharedData.setParam("items", res.data);
+            sharedData.setParam("item_all", res.data);
         });
 
     CoreGenericService
         .getAll('enemy')
         .then(res => {
             self.enemy.count = res.data.length;
-            sharedData.setParam("enemies", res.data);
+            sharedData.setParam("enemy_all", res.data);
         });
 
     self.changeRoute = function(newRoute) {

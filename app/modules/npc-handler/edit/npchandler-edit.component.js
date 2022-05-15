@@ -6,7 +6,7 @@ function NpcHandlerEditController($scope, $location, CoreGenericService, sharedD
     self.npcData = {};
 
     self.findNextNpcUid = () => {
-        let npcs = sharedData.getParam("npcs");
+        let npcs = sharedData.getParam("npc_all");
         let lastUid = 0;
         npcs.map(function(obj){
             if (obj.uid > lastUid){

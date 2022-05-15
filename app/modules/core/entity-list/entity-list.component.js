@@ -5,6 +5,7 @@ function EntityHandlerListController($location, $routeParams, CoreGenericService
     self.entitiesLabel = "entities";
 
     const entity = $routeParams.entity;
+    const entityAll = `${entity}_all`
 
     sharedData.setParam(entity, null);
 
@@ -12,7 +13,7 @@ function EntityHandlerListController($location, $routeParams, CoreGenericService
         .getAll(entity)
         .then((res) => {
             self.entities = res.data;
-            // sharedData.setParam(entitiesLabel, res.data);
+            sharedData.setParam(entityAll, res.data);
         });
 
     self.edit = (elem) => {

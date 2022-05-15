@@ -6,7 +6,7 @@ function ItemHandlerEditController($scope, $location, CoreGenericService, shared
     self.data = {};
 
     self.findNextItemUid = () => {
-        let items = sharedData.getParam("items");
+        let items = sharedData.getParam("item_all");
         let lastUid = 0;
         items.map(function(obj){
             if (obj.uid > lastUid){
@@ -114,19 +114,15 @@ function ItemHandlerEditController($scope, $location, CoreGenericService, shared
     };
 
     // Bootstrap
-    if (sharedData.getParam("items") === undefined) {
-        CoreGenericService
-            .getAll(entity)
-            .then((res) => {
-                sharedData.setParam("items", res.data);
-                self.initialize();
-            })
-            .catch(reason =>
-                FeedbackBarService.error("Failed to get all items! Status: " + reason.status + ". Error: " + reason.data.error)
-            );
-    } else {
-        self.initialize();
-    }
+    CoreGenericService
+        .getAll(entity)
+        .then((res) => {
+            sharedData.setParam("item_all", res.data);
+            self.initialize();
+        })
+        .catch(reason =>
+            FeedbackBarService.error("Failed to get all items! Status: " + reason.status + ". Error: " + reason.data.error)
+        );
 }
 
 angular
