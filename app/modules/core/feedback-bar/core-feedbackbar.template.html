@@ -2,5 +2,10 @@
 
 <!--<nav class="navbar navbar-expand-md bg-info fixed-bottom">-->
 <nav id="bottomNav" class={{$ctrl.feedbackClass}}>
-<div style="color:white;">{{$ctrl.feedbackText}}</div>
+    <div style="color:white;">
+        {{$ctrl.feedbackText}}
+    </div>
+    <div>
+        <button class="btn btn-outline-light" ng-click='$ctrl.hide()'>X</button>
+    </div>
 </nav>
