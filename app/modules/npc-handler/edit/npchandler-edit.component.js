@@ -23,27 +23,30 @@ function NpcHandlerEditController($scope, $location, CoreGenericService, sharedD
         });
     };
 
+    // Minor fixer for the new decisions feature.
+    self.fixInteractionData = (inter) => {
+        if (inter.decision === undefined || inter.decision === null || inter.decision.selectOptions === null) {
+            inter.decision = {selectOptions:[]};
+        }
+
+        if (inter.storeItems === undefined || inter.storeItems === null) {
+            inter.storeItems = [];
+        }
+
+        self.setupStoreItems(inter.storeItems);
+    }
+
     console.log("Edit npc: " + sharedData.getParam("npc"));
     self.npcData = sharedData.getParam("npc");
 
     if (self.npcData !== null && self.npcData !== undefined && self.npcData.uid !== null) {
         self.operationTitle = "Editing";
-        // Minor fixer for the new decisions feature.
-        self.npcData.interactionData.forEach(inter => {
-            if (inter.decision === undefined || inter.decision === null || inter.decision.selectOptions === null) {
-                inter.decision = {selectOptions:[]};
-            }
-
-            if (inter.storeItems === undefined || inter.storeItems === null) {
-                inter.storeItems = [];
-            }
-
-            self.setupStoreItems(inter.storeItems);
-        });
+        self.npcData.interactionData.forEach(self.fixInteractionData);
     }
     else if (self.npcData !== null && self.npcData !== undefined && self.npcData.uid === null) {
         self.operationTitle = "Cloning";
         self.npcData.uid = self.findNextNpcUid();
+        self.npcData.interactionData.forEach(self.fixInteractionData);
     }
     else {
         self.operationTitle = "Creating";
