@@ -6,6 +6,7 @@ function FeedbackBarController(FeedbackBarService) {
     const errorFeedbackClass = "navbar navbar-expand-md bg-danger fixed-bottom";
     const hideFeedbackClass = "";
     const hideFeedbackText = "";
+    self.active = false;
 
     self.feedbackText = hideFeedbackText;
     self.feedbackClass = hideFeedbackClass;
@@ -13,16 +14,19 @@ function FeedbackBarController(FeedbackBarService) {
     self.info = (text) => {
         self.feedbackText = text;
         self.feedbackClass = infoFeedbackClass;
+        self.active = true;
     };
 
     self.error = (text) => {
         self.feedbackText = text;
         self.feedbackClass = errorFeedbackClass;
+        self.active = true;
     };
 
     self.hide = () => {
         self.feedbackClass = hideFeedbackClass;
         self.feedbackText = hideFeedbackText;
+        self.active = false;
     };
 
     FeedbackBarService.registerFeedbackBar(self);

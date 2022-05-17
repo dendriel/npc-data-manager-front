@@ -6,6 +6,6 @@
         {{$ctrl.feedbackText}}
     </div>
     <div>
-        <button class="btn btn-outline-light" ng-click='$ctrl.hide()'>X</button>
+        <button class="btn btn-outline-light" ng-hide='!$ctrl.active' ng-click='$ctrl.hide()'>X</button>
     </div>
 </nav>
