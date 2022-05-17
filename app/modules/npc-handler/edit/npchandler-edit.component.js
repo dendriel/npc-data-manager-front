@@ -4,6 +4,7 @@ function NpcHandlerEditController($scope, $location, CoreGenericService, sharedD
     const entity = 'npc';
     let self = this;
     self.npcData = {};
+    self.operationTitle = "Unknown";
 
     self.findNextNpcUid = () => {
         let npcs = sharedData.getParam("npc_all");
@@ -16,7 +17,6 @@ function NpcHandlerEditController($scope, $location, CoreGenericService, sharedD
         return lastUid+1;
     };
 
-
     self.setupStoreItems = (storeItems) => {
         storeItems.forEach(e => {
             e.uid = { uid: e.id };
@@ -25,21 +25,9 @@ function NpcHandlerEditController($scope, $location, CoreGenericService, sharedD
 
     console.log("Edit npc: " + sharedData.getParam("npc"));
     self.npcData = sharedData.getParam("npc");
-    if (self.npcData === null || self.npcData === undefined) {
-        console.log("Create NPC");
-        self.npcData = {
-            name: "FIX ME",
-            uid: self.findNextNpcUid(),
-            behaviorId: 2,
-            status: { strength: 0, intelligence: 0, dexterity: 0, accuracy: 0, life: 0, mana: 0 },
-            spriteData: { resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" }, order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
-            interactionOrder: [],
-            interactionData: [],
-            facingRight: false,
-            idAsText: null
-        }
-    }
-    else {
+
+    if (self.npcData !== null && self.npcData !== undefined && self.npcData.uid !== null) {
+        self.operationTitle = "Editing";
         // Minor fixer for the new decisions feature.
         self.npcData.interactionData.forEach(inter => {
             if (inter.decision === undefined || inter.decision === null || inter.decision.selectOptions === null) {
@@ -52,6 +40,25 @@ function NpcHandlerEditController($scope, $location, CoreGenericService, sharedD
 
             self.setupStoreItems(inter.storeItems);
         });
+    }
+    else if (self.npcData !== null && self.npcData !== undefined && self.npcData.uid === null) {
+        self.operationTitle = "Cloning";
+        self.npcData.uid = self.findNextNpcUid();
+    }
+    else {
+        self.operationTitle = "Creating";
+        console.log("Create NPC");
+        self.npcData = {
+            name: "FIX ME",
+            uid: self.findNextNpcUid(),
+            behaviorId: 2,
+            status: { strength: 0, intelligence: 0, dexterity: 0, accuracy: 0, life: 0, mana: 0 },
+            spriteData: { resource: { resId: 1, dirId: 1, storageId: "images/icon_iron_dagger.png" }, order: 0, offset: {x: 0, y: 0}, scale: {width: 1, height: 1}, enabled: true },
+            interactionOrder: [],
+            interactionData: [],
+            facingRight: false,
+            idAsText: null
+        }
     }
 
     self.addEventState = (eventsState) => {

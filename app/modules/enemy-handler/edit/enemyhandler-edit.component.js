@@ -4,6 +4,7 @@ function EnemyHandlerEditController($scope, $location, CoreGenericService, share
     const entity = "enemy";
     let self = this;
     self.enemyData = {};
+    self.operationTitle = "Unknown";
 
     self.findNextEnemyUid = () => {
         let enemies = sharedData.getParam("enemy_all");
