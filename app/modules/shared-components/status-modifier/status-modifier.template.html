@@ -4,10 +4,10 @@
         <tr>
             <td>
                 <table>
-                    <tr ng-repeat="modifier in $ctrl.data.persistentStatusModifiers track by $index" style="padding-top:5px; padding-bottom: 5px">
+                    <tr ng-repeat="modifier in $ctrl.data track by $index" style="padding-top:5px; padding-bottom: 5px">
                         <td>Type:</td>
                         <td style="text-align: left">
-                            <select ng-model='$ctrl.data.persistentStatusModifiers[$index].type'>
+                            <select ng-model='$ctrl.data[$index].type'>
                                 <option value="FROZEN">Frozen</option>
                                 <option value="POISONED">Poisoned</option>
                                 <option value="MELEE_ATTACK">Melee Attack</option>
@@ -18,11 +18,11 @@
                             </select>
                         </td>
                         <td>Value:</td>
-                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.persistentStatusModifiers[$index].value'></td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data[$index].value'></td>
                         <td>Turns:</td>
-                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data.persistentStatusModifiers[$index].turns'></td>
+                        <td><input type="number" id="numberInput" style="text-align:center" ng-model='$ctrl.data[$index].turns'></td>
                         <td>
-                            <button ng-click='$ctrl.removeElement($ctrl.data.persistentStatusModifiers[$index])'>Remove</button>
+                            <button ng-click='$ctrl.removeElement($ctrl.data[$index])'>Remove</button>
                         </td>
                     </tr>
                     <tr style="padding-top:10px; padding-bottom: 5px">
