@@ -7,6 +7,7 @@
             <fieldset style="background-color:#ffddb0; width:20%; float:left">
                 <legend>General</legend>
                 UID: <input type="text" name="id" readonly ng-model="$ctrl.npcData.uid"><br />
+                Enabled: <input type="checkbox" ng-model='$ctrl.npcData.active'><br />
                 Name: <input type="text" ng-model='$ctrl.npcData.name'><br />
                 Map: <input ng-model='$ctrl.npcData.mapName'><br />
                 Behavior Id: <input type="number" ng-model='$ctrl.npcData.behaviorId'><br />
@@ -46,6 +47,8 @@
                     <option value="REMOVE_QUEST_ITEM">Remove Quest Item</option>
                     <option value="CONTAINER">Container</option>
                     <option value="CHANGE_HERO_SPRITE">Change Hero Sprite</option>
+                    <option value="ACTIVATE_NPC">Activate NPC</option>
+                    <option value="DEACTIVATE_NPC">Deactivate NPC</option>
                 </select>
                 <br />
 
@@ -75,7 +78,7 @@
                     Y: <input type="number" step="1" id="numberInput" ng-model='inter.toPos.y'><br />
                 </span>
 
-                <span ng-hide='inter.type !== "REMOVE_QUEST_ITEM" && inter.type !== "PLAY_SOUND"'>
+                <span ng-hide='inter.type !== "REMOVE_QUEST_ITEM" && inter.type !== "PLAY_SOUND && inter.type !== "ACTIVATE_NPC && inter.type !== "DEACTIVATE_NPC"'>
                     Target Data: <input type="text" ng-model='inter.targetData' style="width: 350px">
                 </span>
                 <br />
